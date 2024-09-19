@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 const Register = () => {
   return (
     <>
-      <div class="bg-gray-400 text-black p-2 m-6">
+      <div class="bg-gray-400 text-black p-2 m-6 h-full">
         <h1 class="flex justify-center">Register</h1>
         <div class="flex justify-center">
           <form>
