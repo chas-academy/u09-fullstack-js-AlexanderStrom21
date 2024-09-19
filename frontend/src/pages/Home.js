@@ -1,13 +1,11 @@
-import Navbar from './Navbar'
+import HomeCards from "../components/homeCards";
 
 const Home = () => {
   return (
-    <div>
-        <Navbar />
-        
-        <h1>Home</h1>
-    </div>
-  )
-}
+    <>
+      <HomeCards></HomeCards>
+    </>
+  );
+};
 
-export default Home
+export default Home;

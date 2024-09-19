@@ -14,7 +14,7 @@ const Login = () => {
               id="email"
               name="email"
               value="alex@alex.alex"
-            ></input>{" "}
+            ></input>
             <br></br>
             <label for="password">Last name:</label> <br></br>
             <input
@@ -23,16 +23,18 @@ const Login = () => {
               id="password"
               name="password"
               value="password123"
-            ></input>{" "}
+            ></input>
             <br></br>
-            <li class="p-4 ">
+            <li class="flex justify-center p-4 list-none underline">
               <NavLink to="/Register">Not registered?</NavLink>
             </li>
-            <input
-              class="flex bg-gray-500 text-black p-2 rounded-lg mt-3"
-              type="submit"
-              value="Login"
-            ></input>
+            <div class="flex justify-center">
+              <input
+                class="flex bg-gray-500 text-black p-2 rounded-lg mt-3"
+                type="submit"
+                value="Login"
+              ></input>
+            </div>
           </form>
         </div>
       </div>

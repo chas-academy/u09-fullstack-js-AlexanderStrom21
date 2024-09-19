@@ -1,22 +1,40 @@
 import { NavLink } from "react-router-dom";
 
-const HomeNav = () => {
+const HomeNav = ({ CPlusNav, CSharpNav, JavaNav, JavaScriptNav, PhpNav }) => {
   return (
-    <>
-      <nav class="flex justify-center">
-        <ul class="flex">
-          <li class="p-4">
-            <NavLink to="/">Home</NavLink>
+    <nav className="flex justify-center">
+      <ul className="flex">
+        {CPlusNav && (
+          <li className="p-4">
+            <NavLink to="/CPlus">C++</NavLink>
           </li>
-          <li class="p-4">
-            <NavLink to="/Login">Login</NavLink>
+        )}
+
+        {CSharpNav && (
+          <li className="p-4">
+            <NavLink to="/CSharp">C#</NavLink>
           </li>
-          <li class="p-4">
-            <NavLink to="/Register">Register</NavLink>
+        )}
+
+        {JavaNav && (
+          <li className="p-4">
+            <NavLink to="/Java">Java</NavLink>
           </li>
-        </ul>
-      </nav>
-    </>
+        )}
+
+        {JavaScriptNav && (
+          <li className="p-4">
+            <NavLink to="/JavaScript">JavaScript</NavLink>
+          </li>
+        )}
+
+        {PhpNav && (
+          <li className="p-4">
+            <NavLink to="/Php">PHP</NavLink>
+          </li>
+        )}
+      </ul>
+    </nav>
   );
 };
 
