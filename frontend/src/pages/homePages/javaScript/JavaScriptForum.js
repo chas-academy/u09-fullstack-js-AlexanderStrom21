@@ -1,5 +1,9 @@
+import Forum from "../../../components/Forum";
+
 const JavaScriptForum = () => {
-    return <></>;
+    return <>
+    <Forum></Forum>
+    </>;
   };
   
   export default JavaScriptForum;

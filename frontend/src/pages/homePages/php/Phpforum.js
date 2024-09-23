@@ -1,6 +1,11 @@
+import Forum from "../../../components/Forum";
+
 const PhpForum = () => {
-    return <></>;
-  };
-  
-  export default PhpForum;
-  
+  return (
+    <>
+      <Forum></Forum>
+    </>
+  );
+};
+
+export default PhpForum;

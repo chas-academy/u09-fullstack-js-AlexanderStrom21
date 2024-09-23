@@ -2,7 +2,8 @@ import NavBar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Profile from "./pages/Profile";
+import Profile from "./pages/profile/Profile";
+import DashBoard from "./pages/profile/DashBoard";
 import "./index.css";
 import Home from "./pages/Home";
 import CPlus from "./pages/homePages/cPlus/CPlus";
@@ -10,8 +11,8 @@ import CSharp from "./pages/homePages/cSharp/CSharp";
 import Java from "./pages/homePages/java/Java";
 import JavaScript from "./pages/homePages/javaScript/JavaScript";
 import Php from "./pages/homePages/php/Php";
-import CPlusForum from "./pages/homePages/cPlus/cPlusForum";
-import CSharpForum from "./pages/homePages/cSharp/cSharpForum";
+import CPlusForum from "./pages/homePages/cPlus/CPlusForum";
+import CSharpForum from "./pages/homePages/cSharp/CSharpForum";
 import JavaForum from "./pages/homePages/java/JavaForum";
 import JavaScriptForum from "./pages/homePages/javaScript/JavaScriptForum";
 import PhpForum from "./pages/homePages/php/Phpforum";
@@ -23,6 +24,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/Dashboard" element={<DashBoard />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/CPlus" element={<CPlus />} />

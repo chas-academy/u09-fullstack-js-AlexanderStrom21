@@ -1,5 +1,9 @@
+import Forum from "../../../components/Forum";
+
 const CSharpForum = () => {
-  return <></>;
+  return <>
+  <Forum></Forum>
+  </>;
 };
 
 export default CSharpForum;
