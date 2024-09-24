@@ -15,7 +15,7 @@ const HomeNav = ({ CPlusNav, CSharpNav, JavaNav, JavaScriptNav, PhpNav }) => {
             <NavLink to="/CSharp">C#</NavLink>
           </li>
         )}
-
+ 
         {JavaNav && (
           <li className="p-4">
             <NavLink to="/Java">Java</NavLink>

@@ -1,6 +1,8 @@
 const DashBoard = () => {
-  return <>
-  
-  </>;
+  return (
+    <>
+      <div class="bg-violet-950"></div>
+    </>
+  );
 };
 export default DashBoard;

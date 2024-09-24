@@ -7,13 +7,19 @@ import FrameWork from "../../../components/categories/FrameWork";
 const JavaScript = () => {
   return (
     <>
-      <h1 class="flex justify-center">JavaScript</h1>
-      <NavLink to="/JavaScriptForum">
-        <HelpForum></HelpForum>
-      </NavLink>
-      <Videos></Videos>
-      <Documentation></Documentation>
-      <FrameWork></FrameWork>
+      <div class="flex justify-center">
+        <div class="bg-cyan-800 mt-10 w-3/4 rounded-lg pb-10">
+          <h1 class="flex justify-center text-white font-bold	m-5">
+            JavaScript
+          </h1>
+          <NavLink to="/JavaScriptForum">
+            <HelpForum></HelpForum>
+          </NavLink>
+          <Videos></Videos>
+          <Documentation></Documentation>
+          <FrameWork></FrameWork>
+        </div>
+      </div>
     </>
   );
 };

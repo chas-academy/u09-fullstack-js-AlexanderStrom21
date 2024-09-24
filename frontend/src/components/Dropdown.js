@@ -1,45 +1,43 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import ProfileLogo from "../assets/ProfileLogo.svg";
+import React, { useState, useEffect, useRef } from "react";
 
-function Dropdown() {
-  const navigate = useNavigate();
+const Dropdown = ({ trigger, children }) => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
-  // Define the routes
-  const NavLogin = "/Login";
-  const NavRegister = "/Register";
-
-  // useState for selectedValue
-  const [selectedValue, setSelectedValue] = useState("");
-
-  // Handle dropdown change
-  const handleChange = (event) => {
-    const value = event.target.value;
-    setSelectedValue(value);
-
-    // Programmatically navigate to the selected route
-    if (value) {
-      navigate(value);
-    }
+  // Toggle dropdown visibility
+  const toggleDropdown = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
 
-  function ShowDissapear(value) {
-    const show = document.getElementById("myOption");
-    if (value === NavLogin || NavRegister) {
-      show.style.display = "block";
-    } else {
-      show.style.display = "none";
-    }
-  }
+  // Close the dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   return (
-    <button onClick={ShowDissapear(value)}>
-      <select value={selectedValue} onChange={handleChange}>
-        <option value="">adsasd</option>
-        <option value={NavLogin}>Login</option>
-        <option value={NavRegister}>Register</option>
-      </select>
-    </button>
+    <div className="relative inline-block text-left" ref={dropdownRef}>
+      {/* Trigger Element (e.g., Profile Logo, Button, etc.) */}
+      <button onClick={toggleDropdown} className="flex items-center">
+        {trigger}
+      </button>
+
+      {/* Dropdown Content */}
+      {isDropdownOpen && (
+        <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
+          {children}
+        </div>
+      )}
+    </div>
   );
-}
+};
 
 export default Dropdown;
