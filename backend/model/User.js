@@ -6,7 +6,7 @@ const userSchema = new mongoose.Schema({
     required: true,
     unique: true,
     trim: true,
-    minlength: 6, // Min length username
+    minlength: 6,
   },
   email: {
     type: String,
@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     unique: true,
     trim: true,
     lowercase: true,
-    match: [/.+@.+..+/, "Invalid email address"], // verify email
+    match: [/.+@.+..+/, "Invalid email address"],
   },
   password: {
     type: String,
@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema({
     minlength: 8,
   },
 });
+
 const User = mongoose.model("User", userSchema, "Users");
 
 module.exports = User;
