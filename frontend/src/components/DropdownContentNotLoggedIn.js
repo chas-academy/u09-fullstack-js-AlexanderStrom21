@@ -4,7 +4,6 @@ import ProfileLogo from "../assets/ProfileLogo.svg";
 
 const DropdownContentNotLoggedIn = () => {
   const handleOptionClick = (option) => {
-    console.log(`Selected: ${option}`);
   };
   return (
     <>

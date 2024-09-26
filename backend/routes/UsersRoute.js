@@ -5,16 +5,16 @@ const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const User = require("../model/User");
 
-const app = express();
+const router = express.Router();
 
 // Middleware to parse JSON and cookies
-app.use(express.json());
-app.use(cookieParser());
+router.use(express.json());
+router.use(cookieParser());
 
 // CORS configuration
-app.use(
+router.use(
   cors({
-    origin: "http://localhost:5000", // Update this to your frontend URL
+    origin: "http://localhost:3000", // Update this to your frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
@@ -23,7 +23,7 @@ app.use(
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
 // Register a user
-app.post("/register", async (req, res) => {
+router.post("/register", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
@@ -44,7 +44,7 @@ app.post("/register", async (req, res) => {
 });
 
 // Login user
-app.post("/login", async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -68,37 +68,43 @@ app.post("/login", async (req, res) => {
 });
 
 // Logout user
-app.post("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   res
-    .cookie("token", "", { httpOnly: true, expires: new Date(0) })
+    .clearCookie("token", {
+      httpOnly: true,
+      sameSite: "Lax",
+      secure: false, // Change to true in production (for HTTPS)
+    })
     .json({ message: "Logout successful" });
 });
 
 // Middleware to authenticate
 const authMiddleware = (req, res, next) => {
-  const token = req.cookies.token;
-  if (!token)
-    return res.status(401).json({ message: "No token, authorization denied" });
+  // Read token from cookies instead of Authorization header
+  const token = req.cookies.token; // Get token from cookie
+
+  if (!token) {
+    return res.status(403).json({ error: "No token, authorization denied" }); // Return 403 if no token
+  }
 
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    req.userId = decoded.userId;
-    next();
+    const decoded = jwt.verify(token, JWT_SECRET); // Verify token
+    req.userId = decoded.userId; // Attach user ID to request
+    next(); // Proceed to the next middleware or route handler
   } catch (err) {
-    res.status(401).json({ message: "Invalid token" });
+    return res.status(403).json({ error: "Invalid token" }); // Return 403 if token is invalid
   }
 };
 
-// A protected route example
-app.get("/profile", authMiddleware, async (req, res) => {
+
+// Use the middleware for protected routes
+router.get("/profile", authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select("-password");
-    res.json(user);
+    const user = await User.findById(req.userId).select("-password"); // Get user info without password
+    res.json(user); // Respond with user data
   } catch (err) {
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: "Server error" }); // Handle server error
   }
 });
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
+module.exports = router;

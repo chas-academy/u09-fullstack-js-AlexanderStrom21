@@ -16,6 +16,7 @@ import CSharpForum from "./pages/homePages/cSharp/CSharpForum";
 import JavaForum from "./pages/homePages/java/JavaForum";
 import JavaScriptForum from "./pages/homePages/javaScript/JavaScriptForum";
 import PhpForum from "./pages/homePages/php/Phpforum";
+import Logout from "./pages/Logout";
 
 const App = () => {
   return (
@@ -25,8 +26,9 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Dashboard" element={<DashBoard />} />
-        <Route path="/Login" element={<Login />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Logout" element={<Logout />} />
         <Route path="/CPlus" element={<CPlus />} />
         <Route path="/CSharp" element={<CSharp />} />
         <Route path="/Java" element={<Java />} />

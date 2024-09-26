@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import ProfileLogo from "../assets/ProfileLogo.svg";
+import Logout from "../pages/Logout";
 
 const DropdownContentLoggedIn = () => {
-  const handleOptionClick = (option) => {
-    console.log(`Selected: ${option}`);
-  };
+  const handleOptionClick = () => {};
   return (
     <>
       <Dropdown
@@ -42,6 +41,7 @@ const DropdownContentLoggedIn = () => {
               </button>
             </NavLink>
           </li>
+          <Logout></Logout>
         </ul>
       </Dropdown>
     </>

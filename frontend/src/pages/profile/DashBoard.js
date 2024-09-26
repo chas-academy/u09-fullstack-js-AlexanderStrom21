@@ -1,7 +1,7 @@
 const DashBoard = () => {
   return (
     <>
-      <div class="bg-violet-950"></div>
+      <div className="bg-violet-950"></div>
     </>
   );
 };
