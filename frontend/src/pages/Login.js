@@ -24,6 +24,7 @@ const Login = () => {
         localStorage.setItem("token", data.token); // Ensure you save the token from the response
         alert("Login successful");
         navigate("/profile");
+        window.location.reload();
       } else {
         alert(data.error || data.message); // Show error message from the server
       }

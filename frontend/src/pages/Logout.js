@@ -7,8 +7,13 @@ const Logout = () => {
       });
 
       if (response.ok) {
+        // Remove the token from localStorage
+        localStorage.removeItem("token");
+
+        // Optionally, you can use window.location.reload() to reload the page
+        // to update the NavBar state, or redirect to the login page
         alert("Logout successful");
-        window.location.href = "/login"; // Optionally redirect to login page
+        window.location.href = "/login"; // Redirect to login page after logout
       } else {
         alert("Logout failed");
       }
@@ -17,7 +22,14 @@ const Logout = () => {
     }
   };
 
-  return <button onClick={handleLogout}>Logout</button>;
+  return (
+    <button
+      className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+      onClick={handleLogout}
+    >
+      Logout
+    </button>
+  );
 };
 
 export default Logout;

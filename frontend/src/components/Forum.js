@@ -1,6 +1,12 @@
+import CreateThread from "./CreateThread";
+import ThreadList from "./ThreadList";
+
 const Forum = () => {
   return (
     <>
+          <h1>Forum</h1>
+      <CreateThread />
+      <ThreadList />
       <section className="flex justify-evenly ">
         <div className="flex m-5 flex-wrap justify-center w-screen h-screen">
           <div className="bg-cyan-950 m-5 p-4 text-white w-3/4 h-3/6 rounded-lg">
