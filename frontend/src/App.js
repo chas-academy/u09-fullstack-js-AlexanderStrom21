@@ -1,22 +1,23 @@
 import NavBar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import Login from "./pages/profile/Login";
+import Register from "./pages/profile/Register";
 import Profile from "./pages/profile/Profile";
 import DashBoard from "./pages/profile/DashBoard";
 import "./index.css";
 import Home from "./pages/Home";
-import CPlus from "./pages/homePages/cPlus/CPlus";
-import CSharp from "./pages/homePages/cSharp/CSharp";
-import Java from "./pages/homePages/java/Java";
-import JavaScript from "./pages/homePages/javaScript/JavaScript";
-import Php from "./pages/homePages/php/Php";
-import CPlusForum from "./pages/homePages/cPlus/CPlusForum";
-import CSharpForum from "./pages/homePages/cSharp/CSharpForum";
-import JavaForum from "./pages/homePages/java/JavaForum";
-import JavaScriptForum from "./pages/homePages/javaScript/JavaScriptForum";
-import PhpForum from "./pages/homePages/php/Phpforum";
-import Logout from "./pages/Logout";
+import CPlus from "./pages/homePages/CPlus";
+import CSharp from "./pages/homePages/CSharp";
+import Java from "./pages/homePages/Java";
+import JavaScript from "./pages/homePages/JavaScript";
+import Php from "./pages/homePages/Php";
+import CPlusForum from "./pages/forum/CPlusForum";
+import CSharpForum from "./pages/forum/CSharpForum";
+import JavaForum from "./pages/forum/JavaForum";
+import JavaScriptForum from "./pages/forum/JavaScriptForum";
+import PhpForum from "./pages/forum/Phpforum";
+import Logout from "./pages/profile/Logout";
+import ThreadComment from "./pages/forum/ThreadComment";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />
+        <Route path="/ThreadComment/:id" element={<ThreadComment />} />
         <Route path="/CPlus" element={<CPlus />} />
         <Route path="/CSharp" element={<CSharp />} />
         <Route path="/Java" element={<Java />} />

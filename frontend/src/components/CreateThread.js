@@ -21,35 +21,44 @@ const CreateThread = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label>Title:</label>
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required
-        />
+    <>
+      <div className="grid justify-center">
+        <form onSubmit={handleSubmit}>
+          <div className="">
+            <label>Title on your thread:</label>
+            <input
+              className="text-black"
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Content:</label>
+            <textarea
+              className="text-black"
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label>Author:</label>
+            <input
+              className="text-black"
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+              required
+            />
+          </div>
+          <div className="bg-black size-fit p-1 rounded-lg flex ">
+            <button type="submit">Create Thread</button>
+          </div>
+        </form>
       </div>
-      <div>
-        <label>Content:</label>
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          required
-        />
-      </div>
-      <div>
-        <label>Author:</label>
-        <input
-          type="text"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-          required
-        />
-      </div>
-      <button type="submit">Create Thread</button>
-    </form>
+    </>
   );
 };
 

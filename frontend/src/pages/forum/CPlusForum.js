@@ -1,4 +1,4 @@
-import Forum from "../../../components/Forum";
+import Forum from "../../components/Forum";
 
 const CPlusForum = () => {
   return <>
