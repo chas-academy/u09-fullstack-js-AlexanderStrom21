@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const Profile = () => {
   const [user, setUser] = useState(null); // Initialize user state as null
-  
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -32,6 +32,7 @@ const Profile = () => {
         <div>
           <h1>Welcome, {user.username}!</h1>
           <p>Email: {user.email}</p>
+          <p>Role: {user.isAdmin ? "Admin" : "User"}</p>
         </div>
       ) : (
         <p>Loading...</p>

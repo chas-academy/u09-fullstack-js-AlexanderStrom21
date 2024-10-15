@@ -18,6 +18,7 @@ import JavaScriptForum from "./pages/forum/JavaScriptForum";
 import PhpForum from "./pages/forum/Phpforum";
 import Logout from "./pages/profile/Logout";
 import ThreadComment from "./pages/forum/ThreadComment";
+import RegisterAdmin from "./pages/profile/RegisterAdmin";
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Dashboard" element={<DashBoard />} />
         <Route path="/Register" element={<Register />} />
+        <Route path="/RegisterAdmin" element={<RegisterAdmin />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />
         <Route path="/ThreadComment/:id" element={<ThreadComment />} />

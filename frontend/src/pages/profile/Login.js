@@ -2,7 +2,10 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [formData, setFormData] = useState({ email: "", password: "" });
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const navigate = useNavigate();
 
   const handleChange = (onSubmit) => {
@@ -18,7 +21,7 @@ const Login = () => {
         body: JSON.stringify(formData),
         credentials: "include",
       });
-
+      console.log(formData);
       const data = await response.json();
       if (response.ok) {
         localStorage.setItem("token", data.token); // Ensure you save the token from the response

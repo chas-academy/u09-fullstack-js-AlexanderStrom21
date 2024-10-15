@@ -43,6 +43,32 @@ router.post("/register", async (req, res) => {
   }
 });
 
+// Register an admin user
+router.post("/register-admin", async (req, res) => {
+  try {
+    const { username, email, password } = req.body;
+
+    // Check if user already exists
+    const existingUser = await User.findOne({ email });
+    if (existingUser)
+      return res.status(400).json({ message: "User already exists" });
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const newUser = new User({
+      username,
+      email,
+      password: hashedPassword,
+      isAdmin: true,
+    }); // Set isAdmin to true
+    await newUser.save();
+
+    res.status(201).json({ message: "Admin user registered successfully" });
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 // Login user
 router.post("/login", async (req, res) => {
   try {
@@ -96,14 +122,13 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-
 // Use the middleware for protected routes
 router.get("/profile", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password"); // Get user info without password
-    res.json(user); // Respond with user data
+    res.json(user); // Respond with user data including isAdmin
   } catch (err) {
-    res.status(500).json({ message: "Server error" }); // Handle server error
+    res.status(500).json({ message: "Server error" });
   }
 });
 
