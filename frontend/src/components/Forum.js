@@ -8,7 +8,7 @@ const Forum = () => {
 
   const fetchThreads = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/threads");
+      const response = await axios.get("http://localhost:5000/threads");
       setThreads(response.data);
     } catch (error) {
       console.error("Error fetching threads:", error);
@@ -42,7 +42,7 @@ const Forum = () => {
                   <p>
                     <strong>Author:</strong> {thread.author}
                   </p>
-                  <p classname="flex float-bottom-right">
+                  <p className="flex float-bottom-right">
                     <strong>Date:</strong>
                     {new Date(thread.date).toLocaleString()}
                   </p>

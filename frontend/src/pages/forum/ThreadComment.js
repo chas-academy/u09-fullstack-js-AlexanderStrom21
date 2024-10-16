@@ -10,9 +10,7 @@ const ThreadComment = () => {
   useEffect(() => {
     const fetchThread = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:5000/api/threads/${id}`
-        );
+        const response = await axios.get(`http://localhost:5000/threads/${id}`);
         setThread(response.data);
         setLoading(false); // Stop loading when the data is fetched
       } catch (error) {

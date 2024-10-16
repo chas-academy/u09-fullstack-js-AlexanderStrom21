@@ -9,7 +9,7 @@ const CreateThread = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/threads", {
+      await axios.post("http://localhost:5000/thread", {
         title,
         content,
         author,
