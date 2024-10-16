@@ -25,12 +25,10 @@ const Dropdown = ({ trigger, children }) => {
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
-      {/* Trigger Element (e.g., Profile Logo, Button, etc.) */}
       <button onClick={toggleDropdown} className="flex items-center">
         {trigger}
       </button>
 
-      {/* Dropdown Content */}
       {isDropdownOpen && (
         <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
           {children}

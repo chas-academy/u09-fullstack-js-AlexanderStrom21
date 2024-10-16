@@ -1,10 +1,9 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
-import ProfileLogo from "../assets/ProfileLogo.svg";
+import ProfileLogo from "../../assets/ProfileLogo.svg";
 
 const DropdownContentNotLoggedIn = () => {
-  const handleOptionClick = (option) => {
-  };
+  const handleOptionClick = (option) => {};
   return (
     <>
       <Dropdown

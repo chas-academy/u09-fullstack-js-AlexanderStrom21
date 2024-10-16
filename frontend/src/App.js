@@ -19,6 +19,7 @@ import PhpForum from "./pages/forum/Phpforum";
 import Logout from "./pages/profile/Logout";
 import ThreadComment from "./pages/forum/ThreadComment";
 import RegisterAdmin from "./pages/profile/RegisterAdmin";
+import AllUsers from "./components/AllUsers";
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
         <Route path="/Dashboard" element={<DashBoard />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/RegisterAdmin" element={<RegisterAdmin />} />
+        <Route path="/AllUsers" element={<AllUsers />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />
         <Route path="/ThreadComment/:id" element={<ThreadComment />} />

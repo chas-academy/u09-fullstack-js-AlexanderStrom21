@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import SiteLogo from "../assets/SiteLogo.svg";
-import DropdownContentNotLoggedIn from "./DropdownContentNotLoggedIn";
-import DropdownContentLoggedIn from "./DropdownContentLoggedIn";
+import DropdownContentNotLoggedIn from "../components/dropdown/DropdownContentNotLoggedIn";
+import DropdownContentLoggedIn from "../components/dropdown/DropdownContentLoggedIn";
 
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);

@@ -128,8 +128,44 @@ router.get("/profile", authMiddleware, async (req, res) => {
     const user = await User.findById(req.userId).select("-password"); // Get user info without password
     res.json(user); // Respond with user data including isAdmin
   } catch (err) {
+    console.error("Error fetching user profile:", err);
     res.status(500).json({ message: "Server error" });
   }
 });
+
+// get all users
+router.get("/allUsers", authMiddleware, async (req, res) => {
+  try {
+    const users = await User.find({}, "-password"); // Get user info without password
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+//Delete users by id
+router.delete("/users/:id", authMiddleware, async (req, res) => {
+  try {
+    const userId = req.params.id;
+
+    // Check if the requesting user is an admin
+    const requestingUser = await User.findById(req.userId);
+    if (!requestingUser || !requestingUser.isAdmin) {
+      return res.status(403).json({ message: "Access denied" });
+    }
+
+    // Delete the user
+    const deletedUser = await User.findByIdAndDelete(userId);
+    if (!deletedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (err) {
+    console.error("Error deleting user:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 
 module.exports = router;

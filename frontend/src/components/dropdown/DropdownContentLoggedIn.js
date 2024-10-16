@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import Dropdown from "./Dropdown";
-import ProfileLogo from "../assets/ProfileLogo.svg";
-import Logout from "../pages/profile/Logout";
+import ProfileLogo from "../../assets/ProfileLogo.svg";
+import Logout from "../../pages/profile/Logout";
 
 const DropdownContentLoggedIn = () => {
   const handleOptionClick = () => {};
