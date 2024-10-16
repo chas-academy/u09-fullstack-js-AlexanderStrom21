@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import CreateThread from "./CreateThread";
+import CreateThread from "./Threads/CreateThread";
 import axios from "axios";
 
 const Forum = () => {

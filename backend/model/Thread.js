@@ -7,4 +7,6 @@ const ThreadSchema = new mongoose.Schema({
   date: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Thread", ThreadSchema);
+const Thread = mongoose.model("Thread", ThreadSchema);
+
+module.exports = Thread;

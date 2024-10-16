@@ -1,29 +1,23 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { NavLink } from "react-router-dom";
+import UseFetchThreads from "../hooks/UseThreads";
 
 const ThreadList = () => {
-  const [threads, setThreads] = useState([]);
+  const { threads, loading, error } = UseFetchThreads();
 
-  useEffect(() => {
-    const fetchThreads = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/api/threads");
-        setThreads(response.data);
-      } catch (error) {
-        console.error("Error fetching threads:", error);
-      }
-    };
+  if (loading) {
+    return <p>Loading threads...</p>;
+  }
 
-    fetchThreads();
-  }, []);
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div>
       <h1>Forum Threads</h1>
       {threads.map((thread) => (
-        <div key={thread._id}>
-          <h2>{thread.title}</h2>
+        <div key={thread._id} className="border-b-2 pb-4 mb-4">
+          <h2 className="text-2xl font-semibold">{thread.title}</h2>
           <p>{thread.content}</p>
           <p>
             <strong>Author:</strong> {thread.author}
@@ -33,7 +27,9 @@ const ThreadList = () => {
           </p>
           <NavLink to={`/ThreadComment/${thread._id}`}>
             <div className="flex bg-gray-500 p-2 rounded-lg mt-3">
-              <button type="submit">Comment</button>
+              <button type="submit" className="text-white">
+                Comment
+              </button>
             </div>
           </NavLink>
         </div>

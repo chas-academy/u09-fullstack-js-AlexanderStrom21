@@ -31,7 +31,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-app.use("/api/threads", threadRoutes);
+app.use("/", threadRoutes);
 // Register Users Route
 app.use("/", usersRoute); // Register the routes under the base URL
 

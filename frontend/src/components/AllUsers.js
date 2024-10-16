@@ -8,7 +8,6 @@ const AllUsers = () => {
   );
 
   const [users, setUsers] = useState(data); // Local state to manage users list
-
   const handleDelete = async (userId) => {
     try {
       // Make a DELETE request to the backend
@@ -26,6 +25,7 @@ const AllUsers = () => {
         // Update the users list locally by removing the deleted user
         const updatedUsers = users.filter((user) => user._id !== userId);
         setUsers(updatedUsers); // Update the local state with remaining users
+        window.location.reload();
       } else {
         alert("Failed to delete user");
       }
@@ -44,15 +44,18 @@ const AllUsers = () => {
   }
 
   return (
-    <div className="w-full flex justify-center text-white">
-      <div className="flex bg-cyan-950 p-2 m-6 rounded-lg w-3/4 justify-center">
-        <h1 className="flex justify-center ">All Users</h1>
-        <ul>
+    <>
+      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+        <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
+        <ul className="space-y-4 text-black flex flex-col items-center pb-5">
           {data.map((user) => (
-            <li key={user._id}>
-              {user.username}
+            <li
+              className="bg-gray-100 m-2 w-2/4 p-4 rounded-lg flex justify-between items-center"
+              key={user._id}
+            >
+              <span>{user.username}</span>
               <button
-                className="flex bg-gray-500 p-2 rounded-lg mt-3"
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
                 onClick={() => handleDelete(user._id)}
               >
                 Delete
@@ -61,7 +64,7 @@ const AllUsers = () => {
           ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 

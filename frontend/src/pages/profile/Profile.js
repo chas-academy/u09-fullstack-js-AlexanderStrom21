@@ -1,4 +1,5 @@
 import AllUsers from "../../components/AllUsers";
+import ThreadListDelete from "../../components/Threads/ThreadListDelete";
 import UseFetchProfile from "../../hooks/FetchProfile";
 
 const Profile = () => {
@@ -23,6 +24,7 @@ const Profile = () => {
             <div>
               <h2>Admin Dashboard</h2>
               <AllUsers />
+              <ThreadListDelete />
             </div>
           )}
         </div>
