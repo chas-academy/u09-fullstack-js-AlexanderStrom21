@@ -143,6 +143,18 @@ router.get("/allUsers", authMiddleware, async (req, res) => {
   }
 });
 
+//Get user by id
+router.get("/users/:id", authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.userId).select("-password"); // Get user info without password
+    res.json(user); // Respond with user data including isAdmin
+  } catch (err) {
+    console.error("Error fetching user:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+
 //Delete users by id
 router.delete("/users/:id", authMiddleware, async (req, res) => {
   try {
