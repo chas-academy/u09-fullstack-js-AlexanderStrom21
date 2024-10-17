@@ -1,9 +1,11 @@
-import Forum from "../../components/Forum";
+import UseCPlusForum from "../../components/Forum/UseCPlusForum";
 
 const CPlusForum = () => {
-  return <>
-  <Forum></Forum>
-  </>;
+  return (
+    <>
+      <UseCPlusForum />
+    </>
+  );
 };
 
 export default CPlusForum;

@@ -1,9 +1,9 @@
-import Forum from "../../components/Forum";
+import UsePhpForum from "../../components/Forum/UsePhpForum";
 
 const PhpForum = () => {
   return (
     <>
-      <Forum></Forum>
+      <UsePhpForum />
     </>
   );
 };

@@ -1,10 +1,11 @@
-import Forum from "../../components/Forum";
+import UseJavaForum from "../../components/Forum/UseJavaForum";
 
 const JavaForum = () => {
-    return <>
-    <Forum></Forum>
-    </>;
-  };
-  
-  export default JavaForum;
-  
+  return (
+    <>
+      <UseJavaForum />
+    </>
+  );
+};
+
+export default JavaForum;
