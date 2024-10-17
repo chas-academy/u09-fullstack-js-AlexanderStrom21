@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
-// const jwt = require("jsonwebtoken");
-// const bcrypt = require("bcryptjs");
 const Thread = require("../model/Thread");
 const authMiddleware = require("../Middleware/AuthMiddleware");
 
@@ -29,11 +27,12 @@ router.get("/threads", async (req, res) => {
 
 // Create a new thread
 router.post("/thread", async (req, res) => {
-  const { title, content, author } = req.body;
+  const { title, content, author, forumType } = req.body;
   const thread = new Thread({
     title,
     content,
     author,
+    forumType,
   });
 
   try {
@@ -44,9 +43,21 @@ router.post("/thread", async (req, res) => {
   }
 });
 
+//Get threads by forumType
+router.get("/threads/:forumType", async (req, res) => {
+  const { forumType } = req.params;
+  try {
+    const threads = await Thread.find({ forumType }); // Find threads with specific forumType
+    res.json(threads);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
+//Delete Thread by id
 router.delete("/thread/:id", async (req, res) => {
   try {
-    const threadId = req.params.id; 
+    const threadId = req.params.id;
 
     const deletedThread = await Thread.findByIdAndDelete(threadId); // Change Threads to Thread
     if (!deletedThread) {
