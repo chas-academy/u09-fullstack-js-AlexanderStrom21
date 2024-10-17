@@ -7,24 +7,21 @@ const AllUsers = () => {
     "http://localhost:5000/allUsers"
   );
 
-  const [users, setUsers] = useState(data); // Local state to manage users list
+  const [users, setUsers] = useState(data);
   const handleDelete = async (userId) => {
     try {
-      // Make a DELETE request to the backend
       const response = await axios.delete(
         `http://localhost:5000/users/${userId}`,
         {
-          withCredentials: true, // Ensure cookies are sent
+          withCredentials: true,
         }
       );
 
       if (response.status === 200) {
-        // Show success message
         alert(response.data.message);
 
-        // Update the users list locally by removing the deleted user
         const updatedUsers = users.filter((user) => user._id !== userId);
-        setUsers(updatedUsers); // Update the local state with remaining users
+        setUsers(updatedUsers);
         window.location.reload();
       } else {
         alert("Failed to delete user");
@@ -45,7 +42,7 @@ const AllUsers = () => {
 
   return (
     <>
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg pb-4">
         <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
         <ul className="space-y-4 text-black flex flex-col items-center pb-5">
           {data.map((user) => (
