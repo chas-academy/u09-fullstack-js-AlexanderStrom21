@@ -18,29 +18,26 @@ const Register = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/register", // Ensure this URL is correct
+        "http://localhost:5000/register", 
         formData,
         {
-          withCredentials: true, // Important for sending cookies
+          withCredentials: true, 
         }
       );
 
-      // Successful registration response
-      alert(response.data.message); // Show success message
-      navigate("/login"); // Navigate to login page
+      alert(response.data.message); 
+      navigate("/login"); 
     } catch (err) {
-      // Improved error handling
+
       if (err.response) {
-        // If there's a response from the server
+
         alert(
           err.response.data.error || "An error occurred during registration"
         );
       } else if (err.request) {
-        // If the request was made but no response was received
         console.error("Error during registration:", err.request);
         alert("Registration failed. Please try again later.");
       } else {
-        // Something happened in setting up the request that triggered an error
         console.error("Error during registration:", err.message);
         alert("An unexpected error occurred.");
       }
