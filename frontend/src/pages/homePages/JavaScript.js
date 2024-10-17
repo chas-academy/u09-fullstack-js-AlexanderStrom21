@@ -13,11 +13,11 @@ const JavaScript = () => {
             JavaScript
           </h1>
           <NavLink to="/JavaScriptForum">
-            <HelpForum></HelpForum>
+            <HelpForum />
           </NavLink>
-          <Videos></Videos>
-          <Documentation></Documentation>
-          <FrameWork></FrameWork>
+          <Videos />
+          <Documentation />
+          <FrameWork />
         </div>
       </div>
     </>
