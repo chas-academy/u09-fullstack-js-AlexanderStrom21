@@ -17,7 +17,6 @@ import JavaForum from "./pages/forum/JavaForum";
 import JavaScriptForum from "./pages/forum/JavaScriptForum";
 import PhpForum from "./pages/forum/Phpforum";
 import Logout from "./pages/profile/Logout";
-import ThreadComment from "./pages/forum/ThreadComment";
 import RegisterAdmin from "./pages/profile/RegisterAdmin";
 import AllUsers from "./components/AllUsers";
 import ThreadListDelete from "./components/Threads/ThreadListDelete";
@@ -35,7 +34,6 @@ const App = () => {
         <Route path="/AllUsers" element={<AllUsers />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />
-        <Route path="/ThreadComment/:id" element={<ThreadComment />} />
         <Route path="/ThreadListDelete" element={<ThreadListDelete />} />
         <Route path="/CPlus" element={<CPlus />} />
         <Route path="/CSharp" element={<CSharp />} />
