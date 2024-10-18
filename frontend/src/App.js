@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Login from "./pages/profile/Login";
 import Register from "./pages/profile/Register";
 import Profile from "./pages/profile/Profile";
+import Settings from "./pages/profile/Settings";
 import DashBoard from "./pages/profile/DashBoard";
 import "./index.css";
 import Home from "./pages/Home";
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/AllUsers" element={<AllUsers />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/Logout" element={<Logout />} />
+        <Route path="/Settings" element={<Settings />} />
         <Route path="/ThreadListDelete" element={<ThreadListDelete />} />
         <Route path="/CPlus" element={<CPlus />} />
         <Route path="/CSharp" element={<CSharp />} />
