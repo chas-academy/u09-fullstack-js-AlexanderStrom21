@@ -1,7 +1,9 @@
+import ThreadsCreatedByUser from "../../components/Threads/ThreadsCreatedByUser";
+
 const DashBoard = () => {
   return (
     <>
-      <div className="bg-violet-950"></div>
+      <ThreadsCreatedByUser />
     </>
   );
 };
