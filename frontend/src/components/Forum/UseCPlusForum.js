@@ -7,16 +7,14 @@ const UseCPlusForum = () => {
 
   return (
     <div>
-      <>
-        {isLoggedIn ? (
-          <div>
-            <CreateThread forumType="CPlus" />
-            <FetchThreadsById forumType="CPlus" />
-          </div>
-        ) : (
+      {isLoggedIn ? (
+        <div>
+          <CreateThread forumType="CPlus" />
           <FetchThreadsById forumType="CPlus" />
-        )}
-      </>
+        </div>
+      ) : (
+        <FetchThreadsById forumType="CPlus" />
+      )}
     </div>
   );
 };

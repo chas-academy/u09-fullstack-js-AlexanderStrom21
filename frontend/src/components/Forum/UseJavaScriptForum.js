@@ -7,16 +7,14 @@ const UseJavaScriptForum = () => {
 
   return (
     <div>
-      <>
-        {isLoggedIn ? (
-          <div>
-            <CreateThread forumType="JavaScript" />
-            <FetchThreadsById forumType="JavaScript" />
-          </div>
-        ) : (
+      {isLoggedIn ? (
+        <div>
+          <CreateThread forumType="JavaScript" />
           <FetchThreadsById forumType="JavaScript" />
-        )}
-      </>
+        </div>
+      ) : (
+        <FetchThreadsById forumType="JavaScript" />
+      )}
     </div>
   );
 };

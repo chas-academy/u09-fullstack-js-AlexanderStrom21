@@ -7,16 +7,14 @@ const UseJavaForum = () => {
 
   return (
     <div>
-      <>
-        {isLoggedIn ? (
-          <div>
-            <CreateThread forumType="Java" />
-            <FetchThreadsById forumType="Java" />
-          </div>
-        ) : (
+      {isLoggedIn ? (
+        <div>
+          <CreateThread forumType="Java" />
           <FetchThreadsById forumType="Java" />
-        )}
-      </>
+        </div>
+      ) : (
+        <FetchThreadsById forumType="Java" />
+      )}
     </div>
   );
 };

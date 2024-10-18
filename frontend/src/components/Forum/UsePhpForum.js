@@ -7,16 +7,14 @@ const UsePhpForum = () => {
 
   return (
     <div>
-      <>
-        {isLoggedIn ? (
-          <div>
-            <CreateThread forumType="Php" />
-            <FetchThreadsById forumType="Php" />
-          </div>
-        ) : (
+      {isLoggedIn ? (
+        <div>
+          <CreateThread forumType="Php" />
           <FetchThreadsById forumType="Php" />
-        )}
-      </>
+        </div>
+      ) : (
+        <FetchThreadsById forumType="Php" />
+      )}
     </div>
   );
 };

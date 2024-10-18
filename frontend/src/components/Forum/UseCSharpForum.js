@@ -6,16 +6,14 @@ const UseCSharpForum = () => {
 
   return (
     <div>
-      <>
-        {isLoggedIn ? (
-          <div>
-            <CreateThread forumType="CSharp" />
-            <FetchThreadsById forumType="CSharp" />
-          </div>
-        ) : (
+      {isLoggedIn ? (
+        <div>
+          <CreateThread forumType="CSharp" />
           <FetchThreadsById forumType="CSharp" />
-        )}
-      </>
+        </div>
+      ) : (
+        <FetchThreadsById forumType="CSharp" />
+      )}
     </div>
   );
 };
