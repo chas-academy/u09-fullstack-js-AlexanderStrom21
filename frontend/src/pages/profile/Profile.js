@@ -1,6 +1,7 @@
 import AllUsers from "../../components/AllUsers";
 import ThreadListDelete from "../../components/Threads/ThreadListDelete";
 import UseFetchProfile from "../../hooks/userHooks/FetchProfile";
+import RegisterAUser from "./RegisterUserAsAdmin";
 
 const Profile = () => {
   const { user, loading, error } = UseFetchProfile();
@@ -25,6 +26,7 @@ const Profile = () => {
               <h2>Admin Dashboard</h2>
               <AllUsers />
               <ThreadListDelete />
+              <RegisterAUser />
             </div>
           )}
         </div>
