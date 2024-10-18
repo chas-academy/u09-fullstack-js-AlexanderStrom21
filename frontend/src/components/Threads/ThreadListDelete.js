@@ -1,6 +1,6 @@
 import { useState } from "react";
-import UseFetchThreads from "../../hooks/UseThreads";
 import axios from "axios";
+import UseFetchThreads from "../../hooks/threadHooks/UseThreads";
 
 const ThreadListDelete = () => {
   const { threads, loading, error } = UseFetchThreads();

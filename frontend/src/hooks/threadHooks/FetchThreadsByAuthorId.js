@@ -11,7 +11,9 @@ const useFetchThreadsByAuthorId = () => {
 
   useEffect(() => {
     if (threads && threads.length > 0) {
-      const filteredThreads = threads.filter(thread => thread.author === username);
+      const filteredThreads = threads.filter(
+        (thread) => thread.author === username
+      );
       setUserThreads(filteredThreads);
       setUserAndAuthorMatch(filteredThreads.length > 0);
     }

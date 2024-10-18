@@ -7,7 +7,7 @@ const CreateThread = ({ forumType }) => {
     title: "",
     content: "",
     author: "",
-    forumType: forumType,
+    forumType,
   });
 
   const { user, loading, error } = UseFetchProfile();
@@ -21,14 +21,6 @@ const CreateThread = ({ forumType }) => {
     }
   }, [user]);
 
-  if (loading) {
-    return <p>Loading profile...</p>;
-  }
-
-  if (error) {
-    return <p>Error: {error}</p>;
-  }
-
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -38,18 +30,14 @@ const CreateThread = ({ forumType }) => {
     try {
       await axios.post("http://localhost:5000/thread", formData);
       alert("Thread created successfully in the " + forumType + " forum!");
-      //reset without windows.relode
-      setFormData({
-        title: "",
-        content: "",
-        author: user.username,
-        forumType: forumType,
-      });
+      window.location.reload();
     } catch (error) {
       console.error("Error creating thread:", error);
     }
   };
 
+  if (loading) return <p>Loading profile...</p>;
+  if (error) return <p>Error: {error}</p>;
   return (
     <>
       <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">

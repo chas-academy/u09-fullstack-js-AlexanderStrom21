@@ -1,4 +1,4 @@
-import UseFetchThreads from "../../hooks/UseThreads";
+import UseFetchThreads from "../../hooks/threadHooks/UseThreads";
 
 const ThreadList = () => {
   const { threads, loading, error } = UseFetchThreads();
