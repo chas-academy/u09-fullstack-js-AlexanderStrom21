@@ -1,5 +1,5 @@
 import { useState } from "react";
-import UseFetchThreads from "../../hooks/UseThreads";
+import UseFetchThreads from "../../hooks/threadHooks/UseThreads";
 import axios from "axios";
 
 const ThreadListDelete = () => {

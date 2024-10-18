@@ -1,9 +1,9 @@
 import { useState } from "react";
-import UseFetchUsers from "../hooks/UseFetchUsers";
 import axios from "axios";
+import useFetchUsers from "../hooks/userHooks/UseFetchUsers";
 
 const AllUsers = () => {
-  const { data, loading, error } = UseFetchUsers(
+  const { data, loading, error } = useFetchUsers(
     "http://localhost:5000/allUsers"
   );
 

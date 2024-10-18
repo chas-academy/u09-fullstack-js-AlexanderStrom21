@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import UseFetchProfile from "../../hooks/FetchProfile";
+import UseFetchProfile from "../../hooks/userHooks/FetchProfile";
 
 const CreateThread = ({ forumType }) => {
   const [formData, setFormData] = useState({

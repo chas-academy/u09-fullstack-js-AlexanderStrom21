@@ -1,6 +1,6 @@
 import CreateThread from "../Threads/CreateThread";
-import useAuth from "../../hooks/UseAuth";
-import FetchThreadsById from "../../hooks/FetchThreadsById";
+import useAuth from "../../hooks/userHooks/UseAuth";
+import FetchThreadsById from "../Threads/FetchThreadsById";
 
 const UseCPlusForum = () => {
   const isLoggedIn = useAuth();

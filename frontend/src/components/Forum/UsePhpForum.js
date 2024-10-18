@@ -1,6 +1,6 @@
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/userHooks/UseAuth";
 import CreateThread from "../Threads/CreateThread";
-import FetchThreadsById from "../../hooks/FetchThreadsById";
+import FetchThreadsById from "../Threads/FetchThreadsById";
 
 const UsePhpForum = () => {
   const isLoggedIn = useAuth();
