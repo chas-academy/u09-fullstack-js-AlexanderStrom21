@@ -154,6 +154,42 @@ router.get("/users/:id", authMiddleware, async (req, res) => {
   }
 });
 
+//Update User by id
+router.put("/updateUser/:id", authMiddleware, async (req, res) => {
+  const userId = req.params.id;
+  const { email, password } = req.body;
+
+  try {
+    const requestingUser = await User.findById(req.userId);
+    if (
+      !requestingUser ||
+      (!requestingUser.isAdmin && requestingUser._id.toString() !== userId)
+    ) {
+      return res.status(403).json({ message: "acces denied" });
+    }
+
+    const updatedFields = {};
+    if (email) updatedFields.email = email;
+    if (password) {
+      updatedFields.password = await bcrypt.hash(password, 10);
+    }
+
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedFields, {
+      new: true,
+      runValidators: true,
+    }).select("-password");
+    if (!updatedUser) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    res
+      .status(200)
+      .json({ message: "User updated Successfully", user: updatedUser });
+  } catch (err) {
+    console.error("Error updating user:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
 
 //Delete users by id
 router.delete("/users/:id", authMiddleware, async (req, res) => {
@@ -178,6 +214,5 @@ router.delete("/users/:id", authMiddleware, async (req, res) => {
     res.status(500).json({ message: "Server error" });
   }
 });
-
 
 module.exports = router;
