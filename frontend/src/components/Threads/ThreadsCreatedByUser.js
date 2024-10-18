@@ -1,9 +1,11 @@
+import useThreadListWithDelete from "../../hooks/threadHooks/DeleteThread";
 import UseFetchThreadsByAuthorId from "../../hooks/threadHooks/FetchThreadsByAuthorId";
 import useAuth from "../../hooks/userHooks/UseAuth";
 
 const ThreadsCreatedByUser = () => {
   const isLoggedIn = useAuth();
   const { userAndAuthorMatch, userThreads } = UseFetchThreadsByAuthorId();
+  const { handleDelete } = useThreadListWithDelete();
 
   if (!isLoggedIn) return null;
 
@@ -34,6 +36,12 @@ const ThreadsCreatedByUser = () => {
                           ? new Date(thread.date).toLocaleString()
                           : "No Date Available"}
                       </small>
+                      <button
+                        className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                        onClick={() => handleDelete(thread._id)}
+                      >
+                        Delete
+                      </button>
                     </div>
                   </div>
                 ))
