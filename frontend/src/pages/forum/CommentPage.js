@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import CreateThreadComment from "../../components/Threads/comments/CreateThreadComment";
+import UseFetchThreadComments from "../../hooks/commentHooks/UseFetchThreadComments";
 
 const CommentPage = () => {
   const { threadId } = useParams();
@@ -31,6 +32,11 @@ const CommentPage = () => {
       setThread(foundThread);
     }
   }, [threads, threadId]);
+  const {
+    comments,
+    loading: commentsLoading,
+    error: commentsError,
+  } = UseFetchThreadComments(threadId);
 
   if (loading) {
     return <p>Loading thread...</p>;
@@ -45,10 +51,9 @@ const CommentPage = () => {
   }
 
   return (
-    <div>
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+    <section className="bg-indigo-950 w-3/4 mx-auto rounded-lg pt-10">
+      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">
-          {" "}
           {thread.author}: Comments
         </h1>
         <ul className="space-y-4 text-black flex flex-col items-center pb-5">
@@ -70,9 +75,26 @@ const CommentPage = () => {
           </div>
         </ul>
       </div>
-
+      {commentsLoading && <p>Loading comments...</p>}
+      {commentsError && <p>Error fetching comments: {commentsError}</p>}
+      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+        <h1 className="text-3xl font-bold pt-5 mb-6">Comments:</h1>
+        <div className="space-y-4 text-black flex flex-col items-center pb-5">
+          {comments.map((comment) => (
+            <div
+              key={comment._id}
+              className="bg-gray-100 m-2 w-3/4 p-4 pt-2 rounded-lg"
+            >
+              <strong className="flex justify-self-start py-4">
+                {comment.author}
+              </strong>
+              <p>{comment.comment}</p>
+            </div>
+          ))}
+        </div>
+      </div>
       <CreateThreadComment threadId={threadId} />
-    </div>
+    </section>
   );
 };
 
