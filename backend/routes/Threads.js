@@ -110,9 +110,9 @@ router.delete("/thread/:id", async (req, res) => {
   try {
     const threadId = req.params.id;
 
-    const deletedThread = await Thread.findByIdAndDelete(threadId); // Change Threads to Thread
+    const deletedThread = await Thread.findByIdAndDelete(threadId);
     if (!deletedThread) {
-      return res.status(404).json({ message: "Thread not found" }); // Corrected the message
+      return res.status(404).json({ message: "Thread not found" });
     }
 
     res.status(200).json({ message: "Thread deleted successfully" });
@@ -122,28 +122,30 @@ router.delete("/thread/:id", async (req, res) => {
   }
 });
 
-//Delete Thread Comments by id
+// Delete Thread Comment by ID
 router.delete("/thread/:threadId/comment/:commentId", async (req, res) => {
   const { threadId, commentId } = req.params;
 
   try {
     const thread = await Thread.findById(threadId);
     if (!thread) {
-      return sendResponse(res, 404, null, "Thread not found");
+      return res.status(404).json({ message: "Thread not found" });
     }
 
-    const commentIndex = thread.comments.findIndex(comment => comment._id.toString() === commentId);
+    const commentIndex = thread.comments.findIndex(
+      (comment) => comment._id.toString() === commentId
+    );
     if (commentIndex === -1) {
-      return sendResponse(res, 404, null, "Comment not found");
+      return res.status(404).json({ message: "Comment not found" });
     }
 
     thread.comments.splice(commentIndex, 1);
     await thread.save();
 
-    sendResponse(res, 200, null, "Comment deleted successfully");
+    res.status(200).json({ message: "Comment deleted successfully" });
   } catch (err) {
     console.error("Error deleting comment:", err);
-    sendResponse(res, 500, null, "Server error");
+    res.status(500).json({ message: "Server error" });
   }
 });
 
