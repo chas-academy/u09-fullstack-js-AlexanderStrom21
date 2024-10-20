@@ -19,9 +19,8 @@ const UseFetchThreads = () => {
     };
 
     fetchThreads();
-  }, []); // Only run once when component mounts
+  }, []); 
 
-  // Return both threads and setThreads to allow the component to update state
   return { threads, loading, error, setThreads };
 };
 
