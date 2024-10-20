@@ -61,7 +61,7 @@ const Login = () => {
             required
           />
           <div className="flex bg-gray-500 p-2 rounded-lg mt-3">
-            <button type="submit">Register</button>
+            <button type="submit">Login</button>
           </div>
         </form>
       </ul>
