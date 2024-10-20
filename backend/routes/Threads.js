@@ -122,4 +122,29 @@ router.delete("/thread/:id", async (req, res) => {
   }
 });
 
+//Delete Thread Comments by id
+router.delete("/thread/:threadId/comment/:commentId", async (req, res) => {
+  const { threadId, commentId } = req.params;
+
+  try {
+    const thread = await Thread.findById(threadId);
+    if (!thread) {
+      return sendResponse(res, 404, null, "Thread not found");
+    }
+
+    const commentIndex = thread.comments.findIndex(comment => comment._id.toString() === commentId);
+    if (commentIndex === -1) {
+      return sendResponse(res, 404, null, "Comment not found");
+    }
+
+    thread.comments.splice(commentIndex, 1);
+    await thread.save();
+
+    sendResponse(res, 200, null, "Comment deleted successfully");
+  } catch (err) {
+    console.error("Error deleting comment:", err);
+    sendResponse(res, 500, null, "Server error");
+  }
+});
+
 module.exports = router;
