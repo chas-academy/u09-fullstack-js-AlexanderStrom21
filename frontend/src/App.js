@@ -48,7 +48,7 @@ const App = () => {
         <Route path="/JavaForum" element={<JavaForum />} />
         <Route path="/JavaScriptForum" element={<JavaScriptForum />} />
         <Route path="/PhpForum" element={<PhpForum />} />
-        <Route path="/commentPage" element={<CommentPage />} />
+        <Route path="/commentPage/:threadId" element={<CommentPage />} />
       </Routes>
     </>
   );
