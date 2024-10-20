@@ -79,6 +79,7 @@ router.post("/thread/:id/comment", async (req, res) => {
   }
 });
 
+// get threads comments
 router.get("/thread/:id/comments", async (req, res) => {
   try {
     const thread = await Thread.findById(req.params.id);
