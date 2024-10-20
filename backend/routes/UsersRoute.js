@@ -14,12 +14,11 @@ router.use(cookieParser());
 // CORS configuration
 router.use(
   cors({
-    origin: "http://localhost:3000", // Update this to your frontend URL
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    origin: "http://localhost:3000", 
+    credentials: true, 
   })
 );
 
-// JWT Secret (Consider moving this to an environment variable)
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
 // Register a user
@@ -48,7 +47,6 @@ router.post("/register-admin", async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
     if (existingUser)
       return res.status(400).json({ message: "User already exists" });
@@ -60,7 +58,7 @@ router.post("/register-admin", async (req, res) => {
       email,
       password: hashedPassword,
       isAdmin: true,
-    }); // Set isAdmin to true
+    });
     await newUser.save();
 
     res.status(201).json({ message: "Admin user registered successfully" });
@@ -99,7 +97,7 @@ router.post("/logout", (req, res) => {
     .clearCookie("token", {
       httpOnly: true,
       sameSite: "Lax",
-      secure: false, // Change to true in production (for HTTPS)
+      secure: false, 
     })
     .json({ message: "Logout successful" });
 });
@@ -122,11 +120,11 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-// Use the middleware for protected routes
+// Fetch user profile
 router.get("/profile", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password"); // Get user info without password
-    res.json(user); // Respond with user data including isAdmin
+    res.json(user);
   } catch (err) {
     console.error("Error fetching user profile:", err);
     res.status(500).json({ message: "Server error" });

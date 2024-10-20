@@ -25,6 +25,22 @@ router.get("/threads", async (req, res) => {
   }
 });
 
+//get Thread by id
+router.get("/thread/:id", async (req, res) => {
+  try {
+    const threadId = req.params.id;
+    const thread = await Thread.findById(threadId);
+
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+    res.status(200).json({ message: "Thread fetched successfully" });
+  } catch (err) {
+    console.error("Error fetching thread:", err);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
 // Create a new thread
 router.post("/thread", async (req, res) => {
   const { title, content, author, forumType } = req.body;
@@ -40,6 +56,40 @@ router.post("/thread", async (req, res) => {
     res.status(201).json(savedThread);
   } catch (err) {
     res.status(400).json({ message: err.message });
+  }
+});
+
+// Create a comment by specific id
+router.post("/thread/:id/comment", async (req, res) => {
+  const { author, comment } = req.body;
+
+  try {
+    const thread = await Thread.findById(req.params.id);
+
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+
+    thread.comments.push({ author, comment });
+
+    const updatedThread = await thread.save();
+    res.status(201).json(updatedThread);
+  } catch (err) {
+    res.status(400).json({ message: err.message });
+  }
+});
+
+router.get("/thread/:id/comments", async (req, res) => {
+  try {
+    const thread = await Thread.findById(req.params.id);
+
+    if (!thread) {
+      return res.status(404).json({ message: "Thread not found" });
+    }
+
+    res.json(thread.comments);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 });
 
