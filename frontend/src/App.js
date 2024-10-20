@@ -21,6 +21,7 @@ import Logout from "./pages/profile/Logout";
 import RegisterAdmin from "./pages/profile/RegisterAdmin";
 import AllUsers from "./components/AllUsers";
 import ThreadListDelete from "./components/Threads/ThreadListDelete";
+import CommentPage from "./pages/forum/CommentPage";
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/JavaForum" element={<JavaForum />} />
         <Route path="/JavaScriptForum" element={<JavaScriptForum />} />
         <Route path="/PhpForum" element={<PhpForum />} />
+        <Route path="/commentPage" element={<CommentPage />} />
       </Routes>
     </>
   );
