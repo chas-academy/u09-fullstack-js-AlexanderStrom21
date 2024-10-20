@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import GetThreadIdButton from "./comments/CommentNavigateButton";
 
 const FetchThreadsById = ({ forumType }) => {
   const [threads, setThreads] = useState([]);
@@ -21,7 +22,7 @@ const FetchThreadsById = ({ forumType }) => {
     };
 
     if (forumType) {
-      fetchThreads(); // Only fetch threads if forumType is defined
+      fetchThreads();
     }
   }, [forumType]);
 
@@ -56,6 +57,7 @@ const FetchThreadsById = ({ forumType }) => {
                       ? new Date(thread.date).toLocaleString()
                       : "No Date Available"}
                   </small>
+                  <GetThreadIdButton threadId={thread._id} />
                 </div>
               </div>
             );
