@@ -14,8 +14,8 @@ router.use(cookieParser());
 // CORS configuration
 router.use(
   cors({
-    origin: "http://localhost:3000", 
-    credentials: true, 
+    origin: "http://localhost:3000",
+    credentials: true,
   })
 );
 
@@ -97,7 +97,7 @@ router.post("/logout", (req, res) => {
     .clearCookie("token", {
       httpOnly: true,
       sameSite: "Lax",
-      secure: false, 
+      secure: false,
     })
     .json({ message: "Logout successful" });
 });
@@ -132,23 +132,59 @@ router.get("/profile", authMiddleware, async (req, res) => {
 });
 
 // get all users
-router.get("/allUsers", authMiddleware, async (req, res) => {
+router.get("/allUsers", async (req, res) => {
   try {
-    const users = await User.find({}, "-password"); // Get user info without password
+    const users = await User.find({}, "-password");
     res.json(users);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
 });
 
+router.get("/users", async (req, res) => {
+  const username = req.query.username;
+
+  if (!username) {
+    return res.status(400).json({ error: "Username query is required." });
+  }
+
+  try {
+    const users = await User.find({
+      username: { $regex: username, $options: "i" }, // case-insensitive regex search
+    }).select("-password");
+
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 //Get user by id
 router.get("/users/:id", authMiddleware, async (req, res) => {
   try {
-    const user = await User.findById(req.userId).select("-password"); // Get user info without password
-    res.json(user); // Respond with user data including isAdmin
+    const user = await User.findById(req.userId).select("-password");
+    res.json(user);
   } catch (err) {
     console.error("Error fetching user:", err);
     res.status(500).json({ message: "Server error" });
+  }
+});
+
+//get user by username
+router.get("/users/:username", async (req, res) => {
+  try {
+    const user = await User.findOne(
+      { username: req.params.username },
+      "-password"
+    );
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
   }
 });
 
