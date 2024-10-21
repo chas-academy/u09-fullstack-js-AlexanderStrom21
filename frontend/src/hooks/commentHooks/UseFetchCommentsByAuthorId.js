@@ -13,7 +13,9 @@ const useFetchCommentsByAuthorId = () => {
   useEffect(() => {
     if (threads && threads.length > 0 && username) {
       const filteredComments = threads.flatMap((thread) =>
-        thread.comments.filter((comment) => comment.author === username)
+        thread.comments
+          .filter((comment) => comment.author === username)
+          .map((comment) => ({ ...comment, threadId: thread._id }))
       );
       setUserThreadComments(filteredComments);
       setUserCommentsAndAuthorMatch(filteredComments.length > 0);
