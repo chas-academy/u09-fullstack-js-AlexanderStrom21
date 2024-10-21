@@ -6,6 +6,7 @@ import useFetchCommentsByAuthorId from "../../../hooks/commentHooks/UseFetchComm
 import useAuth from "../../../hooks/userHooks/UseAuth";
 import useThreadListWithDelete from "../../../hooks/threadHooks/DeleteThread";
 import useCommentDelete from "../../../hooks/commentHooks/DeleteComment";
+import UseFetchProfile from "../../../hooks/userHooks/FetchProfile";
 
 const FetchThreadsAndComments = () => {
   const isLoggedIn = useAuth();
@@ -13,9 +14,10 @@ const FetchThreadsAndComments = () => {
   const { userCommentsAndAuthorMatch, userThreadComments } =
     useFetchCommentsByAuthorId();
   const { loading: threadsLoading, error: threadsError } = UseFetchThreads();
-  const [commentsMap, setCommentsMap] = useState({});
   const { handleDelete: threadDelete } = useThreadListWithDelete();
   const { handleDelete: commentDelete } = useCommentDelete();
+  const [commentsMap, setCommentsMap] = useState({});
+  const { user } = UseFetchProfile();
 
   useEffect(() => {
     const fetchCommentsForThreads = async () => {
@@ -27,6 +29,10 @@ const FetchThreadsAndComments = () => {
             );
             return { threadId: thread._id, comments: response.data };
           } catch (error) {
+            console.error(
+              `Error fetching comments for thread ${thread._id}:`,
+              error
+            );
             return { threadId: thread._id, comments: [] };
           }
         });
@@ -41,7 +47,7 @@ const FetchThreadsAndComments = () => {
     };
 
     fetchCommentsForThreads();
-  }, [userThreads]);
+  }, [userThreads, commentsMap]);
 
   const handleCommentDelete = async (threadId, commentId) => {
     if (!threadId || !commentId) {
@@ -75,69 +81,63 @@ const FetchThreadsAndComments = () => {
     <div>
       {userAndAuthorMatch || userCommentsAndAuthorMatch ? (
         <div className="bg-cyan-900 text-white w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
-          {userThreads.length > 0 && (
-            <div className="space-y-6">
+          {user ? (
+            user.isAdmin ? (
+              <h2 className="text-2xl font-bold mb-4">All Threads</h2>
+            ) : (
               <h2 className="text-2xl font-bold mb-4">Your Threads</h2>
-              {userThreads.map((thread) => (
-                <div
-                  key={thread._id}
-                  className="m-4 p-6 rounded-lg bg-cyan-950"
+            )
+          ) : (
+            <p>Profile Loading...</p>
+          )}
+          {userThreads.length > 0 ? (
+            userThreads.map((thread) => (
+              <div key={thread._id} className="m-4 p-6 rounded-lg bg-cyan-950">
+                <h3 className="text-xl font-bold">{thread.title}</h3>
+                <p className="mt-2">{thread.content}</p>
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={() => threadDelete(thread._id)}
                 >
-                  <h3 className="text-xl font-bold">{thread.title}</h3>
-                  <p className="mt-2">{thread.content}</p>
-                  <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    onClick={() => threadDelete(thread._id)}
-                  >
-                    Delete Thread
-                  </button>
-                  <p className="text-sm mt-4">
-                    Author: {thread.author} | Date:{" "}
-                    {new Date(thread.date).toLocaleString()}
-                  </p>
-                </div>
-              ))}
-            </div>
+                  Delete Thread
+                </button>
+                <p className="text-sm mt-4">
+                  Author: {thread.author} | Date:{" "}
+                  {new Date(thread.date).toLocaleString()}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>You have no threads.</p>
           )}
 
-          {userThreadComments.length > 0 && (
-            <div className="mt-10">
-              <h2 className="text-2xl font-bold mb-4">Your Comments</h2>
-              {userThreadComments.map((comment) => (
-                <div
-                  key={comment._id}
-                  className="bg-cyan-950 m-4 p-4 rounded-lg"
+          <h2 className="text-2xl font-bold mb-4">Your Comments</h2>
+          {userThreadComments.length > 0 ? (
+            userThreadComments.map((comment) => (
+              <div key={comment._id} className="bg-cyan-950 m-4 p-4 rounded-lg">
+                <p>
+                  <strong>Comment:</strong> {comment.comment}
+                </p>
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  onClick={() =>
+                    handleCommentDelete(comment.threadId, comment._id)
+                  }
                 >
-                  <p>
-                    <strong>Comment:</strong> {comment.comment}
-                  </p>
-                  <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-                    onClick={() => {
-                      if (comment.threadId) {
-                        handleCommentDelete(comment.threadId, comment._id);
-                      } else {
-                        console.error("Thread ID is missing for this comment");
-                      }
-                    }}
-                  >
-                    Delete Comment
-                  </button>
-                  <p className="text-sm text-white">
-                    Thread: {comment.threadTitle} | Date:{" "}
-                    {new Date(comment.date).toLocaleString()}
-                  </p>
-                </div>
-              ))}
-            </div>
-          )}
-
-          {userThreads.length === 0 && userThreadComments.length === 0 && (
-            <p className="mt-10 text-white">You have no threads or comments.</p>
+                  Delete Comment
+                </button>
+                <p className="text-sm text-white">
+                  Thread: {comment.threadTitle} | Date:{" "}
+                  {new Date(comment.date).toLocaleString()}
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>You have no comments.</p>
           )}
         </div>
       ) : (
-        <p>Nothing matches</p>
+        <p>Loading...</p>
       )}
     </div>
   );
