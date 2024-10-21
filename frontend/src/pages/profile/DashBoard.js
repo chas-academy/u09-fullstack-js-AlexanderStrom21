@@ -1,11 +1,11 @@
-import CommentsCreatedByUser from "../../components/Threads/comments/CommentsCreatedByUser";
-import ThreadsCreatedByUser from "../../components/Threads/ThreadsCreatedByUser";
+import FetchThreadsAndComments from "../../components/Threads/comments/FetchThreadsCommentsByAuthorId";
 
 const DashBoard = () => {
   return (
     <>
-      <ThreadsCreatedByUser />
-      <CommentsCreatedByUser />
+      <div className="bg-cyan-950 text-white w-3/4 mx-auto text-center mt-8 rounded-lg">
+        <FetchThreadsAndComments />
+      </div>
     </>
   );
 };

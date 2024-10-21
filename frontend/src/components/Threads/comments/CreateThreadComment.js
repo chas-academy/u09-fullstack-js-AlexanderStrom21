@@ -31,7 +31,7 @@ const CreateThreadComment = ({ threadId }) => {
         comment: formData.comment,
       });
       alert("Comment created successfully!");
-      window.location.reload(); // Consider using a state management solution instead
+      window.location.reload(); 
     } catch (error) {
       console.error("Error creating comment:", error);
     }

@@ -19,7 +19,7 @@ const UseFetchThreads = () => {
     };
 
     fetchThreads();
-  }, []); 
+  }, []);
 
   return { threads, loading, error, setThreads };
 };
