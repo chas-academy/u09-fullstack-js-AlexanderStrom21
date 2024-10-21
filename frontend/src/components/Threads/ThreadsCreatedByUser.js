@@ -1,12 +1,11 @@
-import useThreadListWithDelete from "../../hooks/threadHooks/DeleteThread";
 import UseFetchThreadsByAuthorId from "../../hooks/threadHooks/FetchThreadsByAuthorId";
+import useThreadListWithDelete from "../../hooks/threadHooks/DeleteThread";
 import useAuth from "../../hooks/userHooks/UseAuth";
 
 const ThreadsCreatedByUser = () => {
   const isLoggedIn = useAuth();
   const { userAndAuthorMatch, userThreads } = UseFetchThreadsByAuthorId();
   const { handleDelete } = useThreadListWithDelete();
-
   if (!isLoggedIn) return null;
 
   return (
