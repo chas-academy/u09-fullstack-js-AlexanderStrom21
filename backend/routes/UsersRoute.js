@@ -1,19 +1,14 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const User = require("../model/User");
 
 const router = express.Router();
+
+// Middleware to parse JSON and cookies
 router.use(express.json());
 router.use(cookieParser());
-app.use(
-  cors({
-    origin: "https://purposecoder.netlify.app", // Allow your frontend URL
-    credentials: true,
-  })
-);
 
 const JWT_SECRET = process.env.JWT_SECRET;
 
@@ -80,11 +75,7 @@ router.post("/login", async (req, res) => {
     });
 
     res
-      .cookie("token", token, {
-        httpOnly: true,
-        sameSite: "Lax", // Can be "None" for cross-origin
-        secure: process.env.NODE_ENV === "production", // True if using HTTPS
-      })
+      .cookie("token", token, { httpOnly: true, secure: false })
       .json({ message: "Login successful" });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
