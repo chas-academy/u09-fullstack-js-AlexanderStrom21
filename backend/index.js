@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "http://localhost:3000", // Allow your frontend URL
-    credentials: true, // Allow credentials
+    credentials: true,
   })
 );
 
@@ -31,9 +31,9 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
+// Register the routes under the base URL
 app.use("/", threadRoutes);
-// Register Users Route
-app.use("/", usersRoute); // Register the routes under the base URL
+app.use("/", usersRoute);
 
 // Get PORT from environment variables or default to 5000
 const PORT = process.env.PORT || 5000;
