@@ -3,11 +3,14 @@ import UseFetchProfile from "../../hooks/userHooks/FetchProfile";
 import RegisterAUser from "./RegisterUserAsAdmin";
 
 const Profile = () => {
-  const { user, loading, error } = UseFetchProfile();
+  const { user, loading, error } = UseFetchProfile(); // Call the hook
+
+  // Show loading message while fetching
   if (loading) {
     return <p>Loading profile...</p>;
   }
 
+  // Handle errors from fetching
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -20,6 +23,7 @@ const Profile = () => {
           <p>Email: {user.email}</p>
           <p>Role: {user.isAdmin ? "Admin" : "User"}</p>
 
+          {/* Render admin dashboard if user is admin */}
           {user.isAdmin && (
             <div>
               <h2>Admin Dashboard</h2>
@@ -29,7 +33,7 @@ const Profile = () => {
           )}
         </div>
       ) : (
-        <p>Loading...</p>
+        <p>No user data found.</p> // Handle case where user data is null
       )}
     </div>
   );

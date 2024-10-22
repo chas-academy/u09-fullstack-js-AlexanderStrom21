@@ -12,6 +12,7 @@ router.use(
     credentials: true, // Allow sending cookies
   })
 );
+
 // Middleware to parse JSON and cookies
 router.use(express.json());
 router.use(cookieParser());
@@ -148,6 +149,7 @@ router.get("/allUsers", async (req, res) => {
   }
 });
 
+// Search users by username
 router.get("/users", async (req, res) => {
   const username = req.query.username;
 
@@ -177,7 +179,7 @@ router.get("/users/:id", authMiddleware, async (req, res) => {
   }
 });
 
-//get user by username
+//Get user by username
 router.get("/users/:username", async (req, res) => {
   try {
     const user = await User.findOne(
@@ -206,7 +208,7 @@ router.put("/updateUser/:id", authMiddleware, async (req, res) => {
       !requestingUser ||
       (!requestingUser.isAdmin && requestingUser._id.toString() !== userId)
     ) {
-      return res.status(403).json({ message: "acces denied" });
+      return res.status(403).json({ message: "Access denied" });
     }
 
     const updatedFields = {};
