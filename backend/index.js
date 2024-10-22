@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
-const usersRoute = require("./routes/UsersRoute"); // Import your users route
+const usersRoute = require("./routes/UsersRoute"); 
 const threadRoutes = require("./routes/Threads");
 
 dotenv.config();

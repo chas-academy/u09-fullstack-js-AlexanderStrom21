@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const Thread = require("../model/Thread");
 const authMiddleware = require("../Middleware/AuthMiddleware");
@@ -9,12 +8,6 @@ const router = express.Router();
 router.use(express.json());
 router.use(cookieParser());
 
-router.use(
-  cors({
-    origin: "https://purposecoder.netlify.app", //frontend URL
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-  })
-);
 // Get all threads
 router.get("/threads", async (req, res) => {
   try {

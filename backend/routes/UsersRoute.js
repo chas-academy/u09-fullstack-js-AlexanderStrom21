@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
@@ -10,14 +9,6 @@ const router = express.Router();
 // Middleware to parse JSON and cookies
 router.use(express.json());
 router.use(cookieParser());
-
-// CORS configuration
-router.use(
-  cors({
-    origin: "https://purposecoder.netlify.app",
-    credentials: true,
-  })
-);
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
