@@ -10,7 +10,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(cookieParser());
 
-const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 
 // Register a user
 router.post("/register", async (req, res) => {
@@ -77,7 +77,6 @@ router.post("/login", async (req, res) => {
     res
       .cookie("token", token, { httpOnly: true })
       .json({ message: "Login successful" });
-    console.log("Token generated:", token);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
@@ -86,7 +85,11 @@ router.post("/login", async (req, res) => {
 // Logout user
 router.post("/logout", (req, res) => {
   res
-    .clearCookie("token", { httpOnly: true })
+    .clearCookie("token", {
+      httpOnly: true,
+      sameSite: "Lax",
+      secure: false,
+    })
     .json({ message: "Logout successful" });
 });
 
@@ -111,9 +114,6 @@ const authMiddleware = (req, res, next) => {
 router.get("/profile", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password"); // Get user info without password
-    if (!user) {
-      return res.status(404).json({ message: "User not found" });
-    }
     res.json(user);
   } catch (err) {
     console.error("Error fetching user profile:", err);
