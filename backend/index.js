@@ -17,7 +17,7 @@ app.use(express.json());
 // CORS configuration
 app.use(
   cors({
-    origin: "http://localhost:3000", // Allow your frontend URL
+    origin: "https://your-netlify-site.netlify.app", // Allow your frontend URL
     credentials: true,
   })
 );
