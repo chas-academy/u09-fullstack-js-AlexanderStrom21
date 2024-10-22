@@ -75,7 +75,7 @@ router.post("/login", async (req, res) => {
     });
 
     res
-      .cookie("token", token, { httpOnly: true, secure: false })
+      .cookie("token", token, { httpOnly: true })
       .json({ message: "Login successful" });
     console.log("Token generated:", token);
   } catch (err) {
@@ -86,7 +86,7 @@ router.post("/login", async (req, res) => {
 // Logout user
 router.post("/logout", (req, res) => {
   res
-    .cookie("token", token, { httpOnly: true, secure: false })
+    .clearCookie("token", token, { httpOnly: true })
     .json({ message: "Logout successful" });
 });
 
