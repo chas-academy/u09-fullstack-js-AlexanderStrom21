@@ -11,7 +11,7 @@ router.use(cookieParser());
 
 router.use(
   cors({
-    origin: "https://purposecoder.netlify.app", // Update this to your frontend URL
+    origin: "https://purposecoder.netlify.app", //frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );
