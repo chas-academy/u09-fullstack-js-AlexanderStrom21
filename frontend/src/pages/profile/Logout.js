@@ -1,16 +1,21 @@
+import axios from "axios";
+
 const Logout = () => {
   const handleLogout = async () => {
     try {
-      const response = await fetch("https://node-mongodb-api-4lo4.onrender.com/logout", {
-        method: "POST",
-        credentials: "include", 
-      });
+      const response = await axios.post(
+        "https://node-mongodb-api-4lo4.onrender.com/logout",
+        {
+          method: "POST",
+          credentials: "include",
+        }
+      );
 
       if (response.ok) {
         localStorage.removeItem("token");
 
         alert("Logout successful");
-        window.location.href = "/login"; 
+        window.location.href = "/login";
       } else {
         alert("Logout failed");
       }

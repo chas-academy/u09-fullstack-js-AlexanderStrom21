@@ -7,13 +7,12 @@ const UseFetchAllUsers = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const { user } = UseFetchProfile();
-  const username = user?.username;
-
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://node-mongodb-api-4lo4.onrender.com/allUsers");
+        const response = await axios.get(
+          "https://node-mongodb-api-4lo4.onrender.com/allUsers"
+        );
         setAllUsers(response.data);
       } catch (err) {
         setError(err.message);
@@ -25,6 +24,8 @@ const UseFetchAllUsers = () => {
     fetchUsers();
   }, []);
 
+  const { user } = UseFetchProfile();
+  const username = user?.username;
   const filterUsers = useCallback(
     (searchTerm) => {
       if (searchTerm.length < 4) {
