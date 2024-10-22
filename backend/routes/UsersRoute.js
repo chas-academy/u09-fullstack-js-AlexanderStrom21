@@ -86,7 +86,7 @@ router.post("/login", async (req, res) => {
 // Logout user
 router.post("/logout", (req, res) => {
   res
-    .clearCookie("token", token, { httpOnly: true })
+    .clearCookie("token", { httpOnly: true })
     .json({ message: "Logout successful" });
 });
 
@@ -100,7 +100,6 @@ const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET); // Verify token
-    console.log("Decoded user ID:", decoded.userId);
     req.userId = decoded.userId; // Attach user ID to request
     next(); // Proceed to the next middleware or route handler
   } catch (err) {
