@@ -77,6 +77,7 @@ router.post("/login", async (req, res) => {
     res
       .cookie("token", token, { httpOnly: true, secure: false })
       .json({ message: "Login successful" });
+    console.log("Token generated:", token);
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
