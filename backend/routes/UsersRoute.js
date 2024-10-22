@@ -3,9 +3,15 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 const User = require("../model/User");
-
+const cors = require("cors");
 const router = express.Router();
 
+app.use(
+  cors({
+    origin: "https://purposecoder.netlify.app", // Your frontend origin
+    credentials: true, // Allow sending cookies
+  })
+);
 // Middleware to parse JSON and cookies
 router.use(express.json());
 router.use(cookieParser());
@@ -73,7 +79,17 @@ router.post("/login", async (req, res) => {
     const token = jwt.sign({ userId: user._id }, JWT_SECRET, {
       expiresIn: "1h",
     });
-    res.status(200).json({ token });
+
+    // Set the token as a cookie
+    res
+      .cookie("token", token, {
+        httpOnly: true, // Helps prevent XSS attacks
+        sameSite: "Lax", // Lax or Strict for better security
+        secure: process.env.NODE_ENV === "production", // Only set as secure in production (HTTPS)
+        maxAge: 3600000, // 1 hour
+      })
+      .status(200)
+      .json({ message: "Login successful" });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
   }
