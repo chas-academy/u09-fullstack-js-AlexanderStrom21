@@ -10,7 +10,7 @@ const UseFetchThreadComments = (threadId) => {
     const fetchThreadComments = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/thread/${threadId}/comments`
+          `https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}/comments`
         );
         setComments(response.data);
         setLoading(false);

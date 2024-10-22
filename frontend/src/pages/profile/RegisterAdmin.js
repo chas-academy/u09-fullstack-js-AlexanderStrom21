@@ -16,14 +16,14 @@ const RegisterAdmin = () => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "http://localhost:5000/register-admin", 
+        "https://node-mongodb-api-4lo4.onrender.com/register-admin",
         formData,
         {
-          withCredentials: true, 
+          withCredentials: true,
         }
       );
 
-      alert(response.data.message); 
+      alert(response.data.message);
     } catch (err) {
       if (err.response) {
         alert(
@@ -40,9 +40,8 @@ const RegisterAdmin = () => {
   };
 
   return (
-    
     <section className="w-full flex justify-center text-white">
-              <h1 className="text-3xl font-bold pt-5 mb-6">Register Admin</h1>
+      <h1 className="text-3xl font-bold pt-5 mb-6">Register Admin</h1>
       <div className="flex bg-cyan-950 p-2 m-6 rounded-lg w-3/4 justify-center">
         <div className="w-full">
           <form

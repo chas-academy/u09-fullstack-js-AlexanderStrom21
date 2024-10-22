@@ -9,7 +9,7 @@ const UseFetchProfile = () => {
     const fetchUser = async () => {
       setLoading(true); 
       try {
-        const response = await fetch("http://localhost:5000/profile", {
+        const response = await fetch("https://node-mongodb-api-4lo4.onrender.com/profile", {
           method: "GET",
           credentials: "include",
         });

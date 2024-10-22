@@ -28,7 +28,7 @@ const CreateThread = ({ forumType }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/thread", formData);
+      await axios.post("https://node-mongodb-api-4lo4.onrender.com/thread", formData);
       alert("Thread created successfully in the " + forumType + " forum!");
       window.location.reload();
     } catch (error) {

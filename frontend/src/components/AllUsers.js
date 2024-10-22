@@ -4,14 +4,14 @@ import useFetchUsers from "../hooks/userHooks/UseFetchUsers";
 
 const AllUsers = () => {
   const { data, loading, error } = useFetchUsers(
-    "http://localhost:5000/allUsers"
+    "https://node-mongodb-api-4lo4.onrender.com/allUsers"
   );
 
   const [users, setUsers] = useState(data);
   const handleDelete = async (userId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/users/${userId}`,
+        `https://node-mongodb-api-4lo4.onrender.com/users/${userId}`,
         {
           withCredentials: true,
         }

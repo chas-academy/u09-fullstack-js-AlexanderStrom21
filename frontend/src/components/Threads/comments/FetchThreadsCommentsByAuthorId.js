@@ -25,7 +25,7 @@ const FetchThreadsAndComments = () => {
         const commentsPromises = userThreads.map(async (thread) => {
           try {
             const response = await axios.get(
-              `http://localhost:5000/thread/${thread._id}/comments`
+              `https://node-mongodb-api-4lo4.onrender.com/thread/${thread._id}/comments`
             );
             return { threadId: thread._id, comments: response.data };
           } catch (error) {

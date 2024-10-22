@@ -14,7 +14,7 @@ const UseFetchOneUser = (username) => {
         }
 
         const response = await axios.get(
-          `http://localhost:5000/users/${username}`
+          `https://node-mongodb-api-4lo4.onrender.com/users/${username}`
         );
         setUser(response.data);
         setLoading(false);

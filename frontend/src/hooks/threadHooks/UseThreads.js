@@ -9,7 +9,7 @@ const UseFetchThreads = () => {
   useEffect(() => {
     const fetchThreads = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/threads");
+        const response = await axios.get("https://node-mongodb-api-4lo4.onrender.com/threads");
         setThreads(response.data);
         setLoading(false);
       } catch (error) {

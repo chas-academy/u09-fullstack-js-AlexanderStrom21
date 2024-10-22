@@ -15,21 +15,21 @@ const Login = () => {
   const handleSubmit = async (onSubmit) => {
     onSubmit.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/login", {
+      const response = await fetch("https://node-mongodb-api-4lo4.onrender.com/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
         credentials: "include",
       });
-      console.log(formData);
+
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Ensure you save the token from the response
+        localStorage.setItem("token", data.token);
         alert("Login successful");
         navigate("/profile");
         window.location.reload();
       } else {
-        alert(data.error || data.message); // Show error message from the server
+        alert(data.error || data.message);
       }
     } catch (err) {
       console.error("Error during login:", err);

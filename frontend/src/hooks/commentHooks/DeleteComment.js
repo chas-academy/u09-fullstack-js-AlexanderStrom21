@@ -28,7 +28,7 @@ const useCommentDelete = () => {
   const handleDelete = async (threadId, commentId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/thread/${threadId}/comment/${commentId}`,
+        `https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}/comment/${commentId}`,
         { withCredentials: true }
       );
 

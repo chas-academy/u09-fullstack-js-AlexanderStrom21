@@ -12,7 +12,7 @@ const GetThreadIdButton = ({ threadId }) => {
     const fetchThread = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/thread/${threadId}`
+          `https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}`
         );
         setThread(response.data);
         setLoading(false);

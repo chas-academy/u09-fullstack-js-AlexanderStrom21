@@ -13,7 +13,7 @@ const useThreadListWithDelete = () => {
   const handleDelete = async (threadId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/thread/${threadId}`,
+        `https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}`,
         { withCredentials: true }
       );
 

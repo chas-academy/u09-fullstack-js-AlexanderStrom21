@@ -13,7 +13,7 @@ const UseFetchAllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/allUsers");
+        const response = await axios.get("https://node-mongodb-api-4lo4.onrender.com/allUsers");
         setAllUsers(response.data);
       } catch (err) {
         setError(err.message);

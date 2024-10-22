@@ -26,7 +26,8 @@ const CreateThreadComment = ({ threadId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:5000/thread/${threadId}/comment`, {
+      
+      await axios.post(`https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}/comment`, {
         author: formData.author,
         comment: formData.comment,
       });
