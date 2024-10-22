@@ -5,15 +5,12 @@ const Logout = () => {
     try {
       const response = await axios.post(
         "https://node-mongodb-api-4lo4.onrender.com/logout",
-        {
-          method: "POST",
-          credentials: "include",
-        }
+        {}, 
+        { withCredentials: true } 
       );
 
-      if (response.ok) {
+      if (response.status === 200) {
         localStorage.removeItem("token");
-
         alert("Logout successful");
         window.location.href = "/login";
       } else {

@@ -108,10 +108,10 @@ const authMiddleware = (req, res, next) => {
 };
 
 // Fetch user profile
-router.get("/profile", async (req, res) => {
+router.get("/profile", authMiddleware, async (req, res) => {
   try {
-    const decoded = jwt.verify(token, JWT_SECRET);
-    const user = await User.findById(decoded.userId).select("-password"); // Get user info without password
+    // Since authMiddleware already verifies the token and sets req.userId
+    const user = await User.findById(req.userId).select("-password"); // Get user info without password
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
