@@ -10,7 +10,7 @@ const router = express.Router();
 router.use(express.json());
 router.use(cookieParser());
 
-const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register a user
 router.post("/register", async (req, res) => {
