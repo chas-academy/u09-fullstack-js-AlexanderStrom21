@@ -15,12 +15,15 @@ const Login = () => {
   const handleSubmit = async (onSubmit) => {
     onSubmit.preventDefault();
     try {
-      const response = await fetch("https://node-mongodb-api-4lo4.onrender.com/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-        credentials: "include",
-      });
+      const response = await fetch(
+        "https://node-mongodb-api-4lo4.onrender.com/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+          credentials: "include",
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
