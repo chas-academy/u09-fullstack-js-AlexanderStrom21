@@ -1,8 +1,9 @@
 const jwt = require("jsonwebtoken");
-const User = require("../model/User"); // Adjust the path as necessary
+const User = require("../model/User");
 
 const authMiddleware = async (req, res, next) => {
-  const token = req.cookies.token; // Get token from cookie
+  const token =
+    req.headers.authorization && req.headers.authorization.split(" ")[1]; // Get token from Authorization header
 
   if (!token) {
     return res.status(403).json({ error: "No token, authorization denied" });
@@ -10,12 +11,7 @@ const authMiddleware = async (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET); // Verify token
-    req.userId = decoded.userId;
-
-    // Fetch the user to check if they are an admin
-    const user = await User.findById(req.userId);
-    req.userIsAdmin = user.isAdmin; // Assuming isAdmin is a boolean field in your User model
-
+    req.userId = decoded.userId; // Attach user ID to request
     next(); // Proceed to the next middleware or route handler
   } catch (err) {
     return res.status(403).json({ error: "Invalid token" });

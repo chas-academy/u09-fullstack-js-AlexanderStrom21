@@ -8,12 +8,12 @@ const Login = () => {
   });
   const navigate = useNavigate();
 
-  const handleChange = (onSubmit) => {
-    setFormData({ ...formData, [onSubmit.target.name]: onSubmit.target.value });
+  const handleChange = (event) => {
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmit = async (onSubmit) => {
-    onSubmit.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     try {
       const response = await fetch(
         "https://node-mongodb-api-4lo4.onrender.com/login",
@@ -21,18 +21,17 @@ const Login = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(formData),
-          credentials: "include",
         }
       );
 
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("token", data.token);
+        localStorage.setItem("token", data.token); // Store the token in local storage
         alert("Login successful");
-        navigate("/profile");
-        window.location.reload();
+        navigate("/profile"); // Navigate to the profile page
+        window.location.reload(); // Reload the page (optional)
       } else {
-        alert(data.error || data.message);
+        alert(data.error || data.message); // Display error message
       }
     } catch (err) {
       console.error("Error during login:", err);

@@ -8,31 +8,30 @@ const UseFetchProfile = () => {
   useEffect(() => {
     const fetchUser = async () => {
       setLoading(true);
+      const token = localStorage.getItem("token"); // Retrieve the token from local storage
       try {
         const response = await fetch(
           "https://node-mongodb-api-4lo4.onrender.com/profile",
           {
             method: "GET",
-            credentials: "include", // Ensure cookies are sent
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`, // Send the token in the header
+            },
           }
         );
-        console.log("Fetch response status:", response.status); // Log status for debugging
 
         if (response.ok) {
           const data = await response.json();
           setUser(data);
         } else if (response.status === 403) {
-          // Handle 403 specifically (token issue)
           setError("Unauthorized access. Token may be missing or invalid.");
-          console.error("Profile fetch error: No token or invalid token");
         } else {
           const errorData = await response.json();
           setError(errorData.message || "Could not fetch profile");
-          console.error("Profile fetch error:", errorData);
         }
       } catch (err) {
         setError("Error fetching profile");
-        console.error("Error fetching profile:", err);
       } finally {
         setLoading(false);
       }
