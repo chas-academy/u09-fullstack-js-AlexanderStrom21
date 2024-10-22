@@ -6,7 +6,7 @@ const User = require("../model/User");
 const cors = require("cors");
 const router = express.Router();
 
-app.use(
+router.use(
   cors({
     origin: "https://purposecoder.netlify.app", // Your frontend origin
     credentials: true, // Allow sending cookies
