@@ -11,7 +11,7 @@ router.use(cookieParser());
 
 router.use(
   cors({
-    origin: "http://localhost:3000", // Update this to your frontend URL
+    origin: "https://purposecoder.netlify.app", // Update this to your frontend URL
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)
   })
 );

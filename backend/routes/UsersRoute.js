@@ -14,7 +14,7 @@ router.use(cookieParser());
 // CORS configuration
 router.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://purposecoder.netlify.app",
     credentials: true,
   })
 );
