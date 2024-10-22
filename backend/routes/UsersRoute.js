@@ -75,7 +75,11 @@ router.post("/login", async (req, res) => {
     });
 
     res
-      .cookie("token", token, { httpOnly: true })
+      .cookie("token", token, {
+        httpOnly: true,
+        sameSite: "Lax", // Can be "None" for cross-origin
+        secure: process.env.NODE_ENV === "production", // True if using HTTPS
+      })
       .json({ message: "Login successful" });
   } catch (err) {
     res.status(500).json({ message: "Server error" });
@@ -95,15 +99,15 @@ router.post("/logout", (req, res) => {
 
 // Middleware to authenticate
 const authMiddleware = (req, res, next) => {
-  // Read token from cookies instead of Authorization header
   const token = req.cookies.token; // Get token from cookie
-
+  console.log("Token from cookie:", token);
   if (!token) {
     return res.status(403).json({ error: "No token, authorization denied" }); // Return 403 if no token
   }
 
   try {
     const decoded = jwt.verify(token, JWT_SECRET); // Verify token
+    console.log("Decoded user ID:", decoded.userId);
     req.userId = decoded.userId; // Attach user ID to request
     next(); // Proceed to the next middleware or route handler
   } catch (err) {
@@ -115,6 +119,9 @@ const authMiddleware = (req, res, next) => {
 router.get("/profile", authMiddleware, async (req, res) => {
   try {
     const user = await User.findById(req.userId).select("-password"); // Get user info without password
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
     res.json(user);
   } catch (err) {
     console.error("Error fetching user profile:", err);

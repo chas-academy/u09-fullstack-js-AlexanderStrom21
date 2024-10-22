@@ -7,33 +7,36 @@ const UseFetchProfile = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      setLoading(true); 
+      setLoading(true);
       try {
-        const response = await fetch("https://node-mongodb-api-4lo4.onrender.com/profile", {
-          method: "GET",
-          credentials: "include",
-        });
+        const response = await fetch(
+          "https://node-mongodb-api-4lo4.onrender.com/profile",
+          {
+            method: "GET",
+            credentials: "include",
+          }
+        );
 
         if (response.ok) {
-          const data = await response.json(); 
+          const data = await response.json();
           setUser(data);
         } else {
-          const errorData = await response.json(); 
+          const errorData = await response.json();
           setError(errorData.message || "Could not fetch profile");
           console.error("Profile fetch error:", errorData);
         }
       } catch (err) {
         setError("Error fetching profile");
-        console.error("Error fetching profile:", err); 
+        console.error("Error fetching profile:", err);
       } finally {
-        setLoading(false); 
+        setLoading(false);
       }
     };
 
     fetchUser();
-  }, []); 
+  }, []);
 
-  return { user, loading, error }; 
+  return { user, loading, error };
 };
 
 export default UseFetchProfile;
