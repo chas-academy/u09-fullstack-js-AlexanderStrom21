@@ -21,6 +21,10 @@ const FetchThreadsAndComments = () => {
 
   useEffect(() => {
     const fetchCommentsForThreads = async () => {
+      const token = localStorage.getItem("token"); // Retrieve the token from local storage
+      if (!token) {
+        return;
+      }
       if (userThreads.length > 0) {
         const commentsPromises = userThreads.map(async (thread) => {
           try {
