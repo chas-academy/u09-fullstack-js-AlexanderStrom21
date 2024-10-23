@@ -34,7 +34,7 @@ const DropdownContentLoggedIn = () => {
           <li>
             <NavLink to="/Dashboard">
               <button
-                className="block w-full px-4 py-2 text-left bg-primaryhover rounded-lg"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg"
                 onClick={() => handleOptionClick("DashBoard")}
               >
                 DashBoard
