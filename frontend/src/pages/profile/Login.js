@@ -62,7 +62,7 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <div className="flex bg-info p-2 rounded-lg mt-3 bg:hoverprimary">
+          <div className="flex bg-info text-white p-2 rounded-lg mt-3 bg:infohover">
             <button type="submit">Login</button>
           </div>
         </form>

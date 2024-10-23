@@ -92,7 +92,7 @@ const ProfileNameChange = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-secondaryhover">
+              <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-infohover">
                 <button type="submit">Update User</button>
               </div>
             </form>

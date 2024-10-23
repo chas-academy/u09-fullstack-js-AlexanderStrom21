@@ -74,7 +74,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          <div className="flex bg-info text-text p-2 rounded-lg mt-3 hover:bg-primaryhover">
+          <div className="flex bg-info text-white p-2 rounded-lg mt-3 hover:bg-infohover">
             <button type="submit">Register</button>
           </div>
         </form>

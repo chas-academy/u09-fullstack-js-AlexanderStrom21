@@ -74,7 +74,7 @@ const CreateThread = ({ forumType }) => {
             <div>
               <p className="text-text">Author: {user.username}</p>
             </div>
-            <div className="flex bg-info p-2 rounded-lg mt-3 text-text hover:bg-secondaryhover">
+            <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-infohover">
               <button type="submit">Create Thread</button>
             </div>
           </form>

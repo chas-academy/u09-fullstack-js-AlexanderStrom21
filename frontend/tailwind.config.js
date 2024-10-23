@@ -18,8 +18,9 @@ module.exports = {
         dark: "#2d3748", // Dark text color for better readability on light backgrounds
         warning: "#dd6b20", // Warning color (orange)
         error: "#e53e3e", // Error color (red)
-        info: "#3182ce", // Info color (blue)
+        info: "#f8589b", // Info color (pink)
         primaryhover: "#a054e7", // Darker shade for primary button hover
+        infohover: "#a35a7e", //pinkhover
       },
     },
   },
