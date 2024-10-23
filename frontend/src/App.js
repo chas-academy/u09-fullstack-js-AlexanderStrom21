@@ -26,7 +26,7 @@ import CommentPage from "./pages/forum/CommentPage";
 const App = () => {
   return (
     <>
-      <div className="bg-main-gradient h-screen w-screen font-sans">
+      <div className="bg-main-gradient h-screen w-screen font-sans fixed overflow-y-auto">
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
