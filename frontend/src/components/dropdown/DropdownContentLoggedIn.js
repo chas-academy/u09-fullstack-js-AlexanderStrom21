@@ -11,7 +11,7 @@ const DropdownContentLoggedIn = () => {
         trigger={<img src={ProfileLogo} alt="Profile" className="w-10 h-10" />}
       >
         <ul>
-          <li className="text-dark">
+          <li>
             <NavLink to="/Profile">
               <button
                 className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg"
