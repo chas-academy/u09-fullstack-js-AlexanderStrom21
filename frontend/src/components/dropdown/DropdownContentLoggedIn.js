@@ -14,7 +14,7 @@ const DropdownContentLoggedIn = () => {
           <li className="text-dark">
             <NavLink to="/Profile">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg"
                 onClick={() => handleOptionClick("Profile")}
               >
                 Profile
@@ -24,7 +24,7 @@ const DropdownContentLoggedIn = () => {
           <li>
             <NavLink to="/Settings">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg"
                 onClick={() => handleOptionClick("Settings")}
               >
                 Settings
@@ -34,7 +34,7 @@ const DropdownContentLoggedIn = () => {
           <li>
             <NavLink to="/Dashboard">
               <button
-                className="block w-full px-4 py-2 text-left bg-primaryhover"
+                className="block w-full px-4 py-2 text-left bg-primaryhover rounded-lg"
                 onClick={() => handleOptionClick("DashBoard")}
               >
                 DashBoard
