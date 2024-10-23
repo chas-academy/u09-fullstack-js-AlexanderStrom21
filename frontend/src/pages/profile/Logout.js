@@ -17,7 +17,7 @@ const Logout = () => {
 
   return (
     <button
-      className="bg-info block w-full px-4 py-2 text-left hover:bg-secondaryhover"
+      className="bg-info block w-full px-4 py-2 text-left hover:bg-primaryhover"
       onClick={handleLogout}
     >
       Logout

@@ -43,7 +43,7 @@ const CreateThread = ({ forumType }) => {
   if (error) return <p>Error: {error}</p>;
   return (
     <>
-      <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
+      <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">
           Create Thread in {forumType} Forum
         </h1>

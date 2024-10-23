@@ -40,9 +40,9 @@ const RegisterAdmin = () => {
   };
 
   return (
-    <section className="w-full flex justify-center text-white">
+    <section className="w-full bg-background flex justify-center text-text">
       <h1 className="text-3xl font-bold pt-5 mb-6">Register Admin</h1>
-      <div className="flex bg-primary p-2 m-6 rounded-lg w-3/4 justify-center">
+      <div className="flex bg-primary text-dark p-2 m-6 rounded-lg w-3/4 justify-center">
         <div className="w-full">
           <form
             onSubmit={handleSubmit}
@@ -72,7 +72,7 @@ const RegisterAdmin = () => {
               onChange={handleChange}
               required
             />
-            <div className="flex bg-info p-2 rounded-lg mt-3 hover:bg-secondaryhover">
+            <div className="flex bg-info p-2 rounded-lg mt-3 hover:bg-primaryhover">
               <button type="submit">Register</button>
             </div>
           </form>

@@ -16,9 +16,9 @@ const Profile = () => {
   }
 
   return (
-    <div className="bg-primary text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
+    <div className="text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
       {user ? (
-        <div className="m-4 p-6 rounded-lg bg-primary">
+        <div className="m-4 p-6 rounded-lg bg-background text-text">
           <h1 className="text-xl font-bold">Welcome, {user.username}!</h1>
           <p className="mt-s2">Email: {user.email}</p>
           <p className="mt-2">Role: {user.isAdmin ? "Admin" : "User"}</p>

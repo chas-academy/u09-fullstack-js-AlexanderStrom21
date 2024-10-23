@@ -66,7 +66,7 @@ const ProfileNameChange = () => {
   return (
     <>
       {user ? (
-        <div className="bg-primary text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+        <div className="bg-background text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
           <h1 className="text-3xl font-bold pt-5 mb-6">
             Update Your user information
           </h1>

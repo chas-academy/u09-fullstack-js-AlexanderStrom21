@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
+    <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
       <h1 className="text-3xl font-bold pt-5 mb-6">Login</h1>
       <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
         <form
@@ -62,7 +62,7 @@ const Login = () => {
             onChange={handleChange}
             required
           />
-          <div className="flex bg-info p-2 rounded-lg mt-3">
+          <div className="flex bg-info p-2 rounded-lg mt-3 bg:hoverprimary">
             <button type="submit">Login</button>
           </div>
         </form>

@@ -42,12 +42,12 @@ const AllUsers = () => {
 
   return (
     <>
-      <div className="bg-secondary text-white w-2/4 mx-auto text-center mt-8 rounded-lg pb-4">
+      <div className="bg-background text-white w-2/4 mx-auto text-center mt-8 rounded-lg pb-4">
         <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
         <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           {data.map((user) => (
             <li
-              className="bg-primary m-2 w-2/4 p-4 rounded-lg flex justify-between items-center"
+              className="bg-secondary m-2 w-2/4 p-4 rounded-lg flex justify-between items-center"
               key={user._id}
             >
               <span>{user.username}</span>

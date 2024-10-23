@@ -43,7 +43,7 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
+    <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
       <h1 className="text-3xl font-bold pt-5 mb-6">Register a user</h1>
       <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
         <form
@@ -74,7 +74,7 @@ const Register = () => {
             onChange={handleChange}
             required
           />
-          <div className="flex bg-info text-text p-2 rounded-lg mt-3 hover:bg-secondaryhover">
+          <div className="flex bg-info text-text p-2 rounded-lg mt-3 hover:bg-primaryhover">
             <button type="submit">Register</button>
           </div>
         </form>

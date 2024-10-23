@@ -60,7 +60,7 @@ const CommentPage = () => {
         </h1>
         <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           <div
-            className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
+            className="bg-primary m-2 w-3/4 p-4 pt-2 rounded-lg"
             key={thread._id}
           >
             <strong className="flex justify-self-start">{thread.author}</strong>
@@ -85,7 +85,7 @@ const CommentPage = () => {
           {comments.map((comment) => (
             <div
               key={comment._id}
-              className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
+              className="bg-primary m-2 w-3/4 p-4 pt-2 rounded-lg"
             >
               <strong className="flex justify-self-start py-4">
                 {comment.author}

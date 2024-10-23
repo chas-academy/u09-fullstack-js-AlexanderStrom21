@@ -11,7 +11,7 @@ const HomeCards = () => {
     <>
       <section className="flex justify-evenly">
         <div className="flex m-5 flex-wrap justify-center">
-          <div className="bg-secondary m-5 p-4 text-white">
+          <div className="bg-background m-5 p-4 text-white">
             <NavLink to="/CSharp">
               <div>
                 <img src={CSharp} alt="C# Logo" />
@@ -20,7 +20,7 @@ const HomeCards = () => {
             </NavLink>
           </div>
 
-          <div className="bg-secondary m-5 p-4 text-white">
+          <div className="bg-background m-5 p-4 text-white">
             <NavLink to="/Java">
               <div>
                 <img src={Java} alt="Java Logo" />
@@ -29,7 +29,7 @@ const HomeCards = () => {
             </NavLink>
           </div>
 
-          <div className="bg-secondary m-5 p-4 text-white">
+          <div className="bg-background m-5 p-4 text-white">
             <NavLink to="/JavaScript">
               <div>
                 <img src={JavaScript} alt="JavaScript Logo" />
@@ -38,7 +38,7 @@ const HomeCards = () => {
             </NavLink>
           </div>
 
-          <div className="bg-secondary m-5 p-4 text-white">
+          <div className="bg-background m-5 p-4 text-white">
             <NavLink to="/CPlus">
               <div>
                 <img src={CPlus} alt="C++ Logo" />
@@ -47,7 +47,7 @@ const HomeCards = () => {
             </NavLink>
           </div>
 
-          <div className="bg-secondary m-5 p-4 text-white">
+          <div className="bg-background m-5 p-4 text-white">
             <NavLink to="/Php">
               <div>
                 <img src={Php} alt="Php Logo" />

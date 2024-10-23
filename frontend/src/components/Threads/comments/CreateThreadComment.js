@@ -44,7 +44,7 @@ const CreateThreadComment = ({ threadId }) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="bg-primary text-text w-1/4 mx-auto text-center mt-8 rounded-lg">
+    <div className="bg-background text-text w-1/4 mx-auto text-center mt-8 rounded-lg">
       <h1 className="text-3xl font-bold pt-5 mb-6">Write your comment</h1>
       <div className=" text-dark flex justify-center items-center pb-5">
         <form onSubmit={handleSubmit}>
@@ -59,9 +59,9 @@ const CreateThreadComment = ({ threadId }) => {
             />
           </div>
           <div>
-            <p className="text-white">Author: {user.username}</p>
+            <p className="text-text">Author: {user.username}</p>
           </div>
-          <div className="flex bg-info p-2 rounded-lg mt-3 text-text">
+          <div className="flex bg-info p-2 rounded-lg mt-3 text-text bg-hoverprimary">
             <button type="submit">Create Comment</button>
           </div>
         </form>

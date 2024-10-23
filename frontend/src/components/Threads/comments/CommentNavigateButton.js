@@ -51,7 +51,7 @@ const GetThreadIdButton = ({ threadId }) => {
   return (
     <button
       type="button"
-      className="bg-info text-text rounded-lg px-3 py-1"
+      className="bg-info text-text rounded-lg px-3 py-1 hover:bg-primaryhover"
       onClick={handleCommentPage}
     >
       Comment

@@ -84,7 +84,7 @@ const FetchThreadsAndComments = () => {
   return (
     <div>
       {userAndAuthorMatch || userCommentsAndAuthorMatch ? (
-        <div className="bg-primary text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
+        <div className="bg-background text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
           {user ? (
             user.isAdmin ? (
               <h2 className="text-2xl font-bold mb-4">All Threads</h2>

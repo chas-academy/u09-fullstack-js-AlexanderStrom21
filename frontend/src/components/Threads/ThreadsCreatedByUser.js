@@ -11,14 +11,14 @@ const ThreadsCreatedByUser = () => {
   return (
     <div>
       {userAndAuthorMatch ? (
-        <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
+        <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
           <h1 className="text-3xl font-bold pt-5 mb-6">Your Threads</h1>
           <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
             <div>
               {userThreads.length > 0 ? (
                 userThreads.map((thread) => (
                   <div
-                    className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
+                    className="bg-primary m-2 w-3/4 p-4 pt-2 rounded-lg"
                     key={thread._id}
                   >
                     <strong className="flex justify-self-start">

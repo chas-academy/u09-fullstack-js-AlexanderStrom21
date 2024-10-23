@@ -12,8 +12,9 @@ module.exports = {
       },
       colors: {
         background: "#5e4b8b", //Cards
-        primary: "#5e4b8b", // Use for buttons, links, etc.
-        secondary: "#7a6a9b", // Use for accents
+        primary: "#542C77", // Use for buttons, links, etc.
+        secondary: "#5D38AA", // Use for accents
+        third: "#5D2290",
         text: "#ffffff", // Main text color
         navbar: "#1a202c", // Dark background for navbar
         muted: "#f0f4f8", // Light background for subtle sections
