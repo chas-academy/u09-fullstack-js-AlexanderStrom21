@@ -9,6 +9,10 @@ const UseFetchProfile = () => {
     const fetchUser = async () => {
       setLoading(true);
       const token = localStorage.getItem("token"); // Retrieve the token from local storage
+      if (!token) {
+        setLoading(false); 
+        return; 
+      }
       try {
         const response = await fetch(
           "https://node-mongodb-api-4lo4.onrender.com/profile",
