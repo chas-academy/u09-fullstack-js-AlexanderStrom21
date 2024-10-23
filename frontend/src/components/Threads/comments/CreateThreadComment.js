@@ -61,7 +61,7 @@ const CreateThreadComment = ({ threadId }) => {
           <div>
             <p className="text-text">Author: {user.username}</p>
           </div>
-          <div className="flex bg-info text-white p-2 rounded-lg mt-3 text-text bg-infohover">
+          <div className="flex bg-info text-white p-2 rounded-lg mt-3 text-text hover:bg-infohover">
             <button type="submit">Create Comment</button>
           </div>
         </form>
