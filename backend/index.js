@@ -3,8 +3,8 @@ const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser"); // For parsing cookies
-const usersRoute = require("./routes/UsersRoute");
-const threadRoutes = require("./routes/Threads");
+const usersRoute = require("./routes/UserRoute");
+const threadRoutes = require("./routes/ThreadRoute");
 
 dotenv.config();
 
@@ -17,7 +17,7 @@ app.use(cookieParser()); // Include cookie-parser to handle cookies
 // CORS Configuration
 app.use(
   cors({
-    origin: ["https://purposecoder.netlify.app", "http://localhost:3000"], // Frontend URLs
+    origin: [process.env.FRONTEND_URL, process.env.DEV_FRONTEND_URL], // Frontend URLs
     credentials: true, // Allow cookies to be sent
   })
 );
