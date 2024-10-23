@@ -9,7 +9,7 @@ const Documentation = () => {
   function DocumentationLayout() {
     return (
       <>
-        <div className="bg-decondary m-1 p-4 text-text rounded-lg">
+        <div className="bg-primary m-1 p-4 text-text rounded-lg">
           <h1>Documentation Extra</h1>
         </div>
       </>
