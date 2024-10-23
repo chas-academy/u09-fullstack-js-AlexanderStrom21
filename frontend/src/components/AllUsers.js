@@ -52,7 +52,7 @@ const AllUsers = () => {
             >
               <span>{user.username}</span>
               <button
-                className="px-4 py-2 bg-warning text-white rounded hover:bg-error-600"
+                className="px-4 py-2 bg-warning text-text rounded hover:bg-error"
                 onClick={() => handleDelete(user._id)}
               >
                 Delete

@@ -36,7 +36,7 @@ const ThreadsCreatedByUser = () => {
                           : "No Date Available"}
                       </small>
                       <button
-                        className="px-4 py-2 bg-warning text-text rounded hover:bg-primaryhover"
+                        className="px-4 py-2 bg-warning text-text rounded hover:bg-error"
                         onClick={() => handleDelete(thread._id)}
                       >
                         Delete

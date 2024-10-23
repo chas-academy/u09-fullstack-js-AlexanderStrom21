@@ -100,7 +100,7 @@ const FetchThreadsAndComments = () => {
                 <h3 className="text-xl font-bold">{thread.title}</h3>
                 <p className="mt-2">{thread.content}</p>
                 <button
-                  className="px-4 py-2 bg-warning text-text rounded hover:bg-secondaryhover"
+                  className="px-4 py-2 bg-warning text-text rounded hover:bg-error"
                   onClick={() => threadDelete(thread._id)}
                 >
                   Delete Thread
@@ -123,7 +123,7 @@ const FetchThreadsAndComments = () => {
                   <strong>Comment:</strong> {comment.comment}
                 </p>
                 <button
-                  className="px-4 py-2 bg-warning text-text rounded hover:bg-primaryhover"
+                  className="px-4 py-2 bg-warning text-text rounded hover:bg-error"
                   onClick={() =>
                     handleCommentDelete(comment.threadId, comment._id)
                   }
