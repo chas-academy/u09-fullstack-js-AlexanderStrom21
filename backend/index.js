@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(cookieParser()); // Include cookie-parser to handle cookies
+app.use(cookieParser());
 
 // CORS Configuration
 app.use(
