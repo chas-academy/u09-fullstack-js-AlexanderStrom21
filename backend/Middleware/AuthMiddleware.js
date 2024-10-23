@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-const User = require("../model/User");
+
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const authMiddleware = async (req, res, next) => {
   const token =
@@ -17,3 +18,5 @@ const authMiddleware = async (req, res, next) => {
     return res.status(403).json({ error: "Invalid token" }); // Return 403 if token is invalid
   }
 };
+
+module.exports = authMiddleware;
