@@ -13,7 +13,7 @@ const UserSearch = () => {
       const results = filterUsers(debouncedSearchTerm);
       setFilteredUsers(results);
     } else {
-      setFilteredUsers([]); 
+      setFilteredUsers([]);
     }
   }, [debouncedSearchTerm, filterUsers]);
 
@@ -28,21 +28,23 @@ const UserSearch = () => {
         placeholder="Search by username..."
         value={searchTerm}
         onChange={handleSearch}
-        className="w-full p-2 border border-gray-300 rounded-md mb-4"
+        className="w-full p-2 rounded-md"
       />
 
-      <div className="bg-white shadow-md rounded-lg">
+      <div className="bg-secondary rounded-lg">
         {loading && <p className="p-4">Loading...</p>}
         {error && <p className="p-4 text-red-500">{error}</p>}
         {filteredUsers.length > 0
           ? filteredUsers.map((user) => (
-              <div key={user.username} className="p-4 border-b border-gray-200">
-                <p className="font-bold">{user.username}</p>
+              <div key={user.username} className="p-4">
+                <p className="font-bold text-white">{user.username}</p>
               </div>
             ))
           : debouncedSearchTerm.length >= 4 &&
             !loading && (
-              <p className="p-4">No user found with that username.</p>
+              <p className="p-4 text-white">
+                No user found with that username.
+              </p>
             )}
       </div>
     </div>

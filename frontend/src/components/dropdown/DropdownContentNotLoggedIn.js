@@ -13,7 +13,7 @@ const DropdownContentNotLoggedIn = () => {
           <li>
             <NavLink to="/Login">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg text-text"
                 onClick={() => handleOptionClick("Login")}
               >
                 Login
@@ -23,7 +23,7 @@ const DropdownContentNotLoggedIn = () => {
           <li>
             <NavLink to="/Register">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover rounded-lg text-text"
                 onClick={() => handleOptionClick("Register")}
               >
                 Register

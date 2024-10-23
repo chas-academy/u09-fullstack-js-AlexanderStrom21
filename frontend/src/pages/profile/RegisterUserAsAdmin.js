@@ -51,7 +51,7 @@ const RegisterAUser = () => {
           className="flex flex-col grid justify-items-center w-full text-dark"
         >
           <input
-            className="flex m-2 w-2/4"
+            className="flex m-2"
             type="text"
             name="username"
             placeholder="Username"
@@ -59,7 +59,7 @@ const RegisterAUser = () => {
             required
           />
           <input
-            className="flex m-2 w-2/4"
+            className="flex m-2"
             type="email"
             name="email"
             placeholder="Email"
@@ -67,7 +67,7 @@ const RegisterAUser = () => {
             required
           />
           <input
-            className="flex m-2 w-2/4"
+            className="flex m-2"
             type="password"
             name="password"
             placeholder="Password"

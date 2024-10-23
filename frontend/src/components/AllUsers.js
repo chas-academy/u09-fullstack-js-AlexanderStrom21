@@ -44,7 +44,7 @@ const AllUsers = () => {
     <>
       <div className="bg-background text-white w-3/4 mx-auto text-center mt-8 rounded-lg pb-4">
         <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
-        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
+        <ul className="space-y-4 text-text flex flex-col items-center pb-5">
           {data.map((user) => (
             <li
               className="bg-secondary m-2 w-full p-4 rounded-lg flex justify-between items-center mr-1"
@@ -52,7 +52,7 @@ const AllUsers = () => {
             >
               <span>{user.username}</span>
               <button
-                className="p-3 text-center bg-warning text-text rounded hover:bg-error"
+                className="py-px px-3 text-center bg-warning text-text rounded hover:bg-error"
                 onClick={() => handleDelete(user._id)}
               >
                 Delete
