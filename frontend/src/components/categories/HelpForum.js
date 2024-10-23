@@ -9,7 +9,7 @@ const HelpForum = () => {
   function HelpForumLayout() {
     return (
       <>
-        <div className="bg-third m-1 p-4 text-text rounded-lg">
+        <div className="bg-primary m-1 p-4 text-text rounded-lg">
           <div>
             <h1>Help forum</h1>
           </div>

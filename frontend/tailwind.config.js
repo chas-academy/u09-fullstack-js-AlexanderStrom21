@@ -11,12 +11,11 @@ module.exports = {
         "secondary-gradient": "linear-gradient(to right, #ff7e5f, #feb47b)",
       },
       colors: {
-        background: "#5e4b8b", //Cards
-        primary: "#542C77", // Use for buttons, links, etc.
-        secondary: "#5D38AA", // Use for accents
-        third: "#5D2290",
-        text: "#ffffff", // Main text color
-        navbar: "#1a202c", // Dark background for navbar
+        background: "#2E073F", //Cards
+        primary: "#7A1CAC", // Use for buttons, links, etc.
+        secondary: "#AD49E1", // Use for accents
+        text: "#EBD3F8", // Main text color
+        navbar: "#2E073F", // Dark background for navbar
         muted: "#f0f4f8", // Light background for subtle sections
         dark: "#2d3748", // Dark text color for better readability on light backgrounds
         accent: "#4A5568", // Neutral accent for borders, shadows, etc.
