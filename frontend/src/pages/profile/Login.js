@@ -26,12 +26,12 @@ const Login = () => {
 
       const data = await response.json();
       if (response.ok) {
-        localStorage.setItem("token", data.token); // Store the token in local storage
+        localStorage.setItem("token", data.token); 
         alert("Login successful");
-        navigate("/profile"); // Navigate to the profile page
-        window.location.reload(); // Reload the page (optional)
+        navigate("/profile"); 
+        window.location.reload(); 
       } else {
-        alert(data.error || data.message); // Display error message
+        alert(data.error || data.message); 
       }
     } catch (err) {
       console.error("Error during login:", err);
