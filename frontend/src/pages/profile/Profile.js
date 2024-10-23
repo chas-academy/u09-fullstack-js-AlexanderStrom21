@@ -29,8 +29,8 @@ const Profile = () => {
         )}
 
         {user && user.isAdmin && (
-          <div className="mt-8 w-2/4">
-            <div className="bg-background text-text text-center rounded-lg p-4">
+          <div className="mt-8 w-3/4">
+            <div className="bg-background text-text text-center rounded-lg p-4 mb-8">
               <h2 className="text-lg font-bold mb-4">Delete User</h2>
               <div className="m-4 p-6 rounded-lg bg-background text-text pb-5">
                 <AllUsers />
