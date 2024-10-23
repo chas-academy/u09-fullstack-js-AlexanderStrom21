@@ -26,30 +26,32 @@ import CommentPage from "./pages/forum/CommentPage";
 const App = () => {
   return (
     <>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Profile" element={<Profile />} />
-        <Route path="/Dashboard" element={<DashBoard />} />
-        <Route path="/Register" element={<Register />} />
-        <Route path="/RegisterAdmin" element={<RegisterAdmin />} />
-        <Route path="/AllUsers" element={<AllUsers />} />
-        <Route path="/Login" element={<Login />} />
-        <Route path="/Logout" element={<Logout />} />
-        <Route path="/Settings" element={<Settings />} />
-        <Route path="/ThreadListDelete" element={<ThreadListDelete />} />
-        <Route path="/CPlus" element={<CPlus />} />
-        <Route path="/CSharp" element={<CSharp />} />
-        <Route path="/Java" element={<Java />} />
-        <Route path="/JavaScript" element={<JavaScript />} />
-        <Route path="/Php" element={<Php />} />
-        <Route path="/CPlusForum" element={<CPlusForum />} />
-        <Route path="/CSharpForum" element={<CSharpForum />} />
-        <Route path="/JavaForum" element={<JavaForum />} />
-        <Route path="/JavaScriptForum" element={<JavaScriptForum />} />
-        <Route path="/PhpForum" element={<PhpForum />} />
-        <Route path="/commentPage/:threadId" element={<CommentPage />} />
-      </Routes>
+      <div className="bg-main-gradient h-screen w-screen font-sans">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/Profile" element={<Profile />} />
+          <Route path="/Dashboard" element={<DashBoard />} />
+          <Route path="/Register" element={<Register />} />
+          <Route path="/RegisterAdmin" element={<RegisterAdmin />} />
+          <Route path="/AllUsers" element={<AllUsers />} />
+          <Route path="/Login" element={<Login />} />
+          <Route path="/Logout" element={<Logout />} />
+          <Route path="/Settings" element={<Settings />} />
+          <Route path="/ThreadListDelete" element={<ThreadListDelete />} />
+          <Route path="/CPlus" element={<CPlus />} />
+          <Route path="/CSharp" element={<CSharp />} />
+          <Route path="/Java" element={<Java />} />
+          <Route path="/JavaScript" element={<JavaScript />} />
+          <Route path="/Php" element={<Php />} />
+          <Route path="/CPlusForum" element={<CPlusForum />} />
+          <Route path="/CSharpForum" element={<CSharpForum />} />
+          <Route path="/JavaForum" element={<JavaForum />} />
+          <Route path="/JavaScriptForum" element={<JavaScriptForum />} />
+          <Route path="/PhpForum" element={<PhpForum />} />
+          <Route path="/commentPage/:threadId" element={<CommentPage />} />
+        </Routes>
+      </div>
     </>
   );
 };
