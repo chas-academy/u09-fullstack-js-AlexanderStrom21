@@ -27,7 +27,7 @@ const ProfileNameChange = () => {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://node-mongodb-api-4lo4.onrender.com/profile/${user._id}`,
+        `https://node-mongodb-api-4lo4.onrender.com/profile/`,
         formData,
         {
           withCredentials: true,

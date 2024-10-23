@@ -47,3 +47,10 @@ exports.getUserProfile = async (userId) => {
 exports.getAllUsers = async () => {
   return await User.find({}, "-password");
 };
+
+exports.updateUserProfile = async (userId, updateData) => {
+  return await User.findByIdAndUpdate(userId, updateData, {
+    new: true,
+    runValidators: true,
+  }).select("-password");
+};
