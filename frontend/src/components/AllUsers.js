@@ -47,7 +47,7 @@ const AllUsers = () => {
         <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           {data.map((user) => (
             <li
-              className="bg-secondary m-2 w-5/6 p-4 rounded-lg flex justify-between items-center mr-1"
+              className="bg-secondary m-2 w-full p-4 rounded-lg flex justify-between items-center mr-1"
               key={user._id}
             >
               <span>{user.username}</span>
