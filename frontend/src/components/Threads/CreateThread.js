@@ -28,7 +28,10 @@ const CreateThread = ({ forumType }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://node-mongodb-api-4lo4.onrender.com/thread", formData);
+      await axios.post(
+        "https://node-mongodb-api-4lo4.onrender.com/thread",
+        formData
+      );
       alert("Thread created successfully in the " + forumType + " forum!");
       window.location.reload();
     } catch (error) {
@@ -40,15 +43,15 @@ const CreateThread = ({ forumType }) => {
   if (error) return <p>Error: {error}</p>;
   return (
     <>
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+      <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">
           Create Thread in {forumType} Forum
         </h1>
-        <ul className="space-y-4 text-black flex flex-col items-center pb-5">
+        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
-                className="text-black"
+                className="text-dark"
                 placeholder="Title"
                 type="text"
                 name="title"
@@ -59,7 +62,7 @@ const CreateThread = ({ forumType }) => {
             </div>
             <div>
               <textarea
-                className="text-black mb-4 w-full h-20"
+                className="text-dark mb-4 w-full h-20"
                 placeholder="Content"
                 type="content"
                 name="content"
@@ -69,9 +72,9 @@ const CreateThread = ({ forumType }) => {
               />
             </div>
             <div>
-              <p className="text-white">Author: {user.username}</p>
+              <p className="text-text">Author: {user.username}</p>
             </div>
-            <div className="flex bg-gray-500 p-2 rounded-lg mt-3 text-white">
+            <div className="flex bg-info p-2 rounded-lg mt-3 text-text hover:bg-secondaryhover">
               <button type="submit">Create Thread</button>
             </div>
           </form>

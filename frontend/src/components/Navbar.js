@@ -7,18 +7,17 @@ import DropdownContentLoggedIn from "../components/dropdown/DropdownContentLogge
 const NavBar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  // Check if user is logged in when the component mounts
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
-      setIsLoggedIn(true); // If there's a token, assume the user is logged in
+      setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
   }, []);
 
   return (
-    <nav className="bg-cyan-950 text-black">
+    <nav className="bg-primary text-black">
       <div className="grid grid-cols-8 p-2 items-center">
         <div className="flex w-14 h-14 ml-10 items-center">
           <NavLink to="/">

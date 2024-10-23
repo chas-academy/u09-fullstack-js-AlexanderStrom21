@@ -9,7 +9,7 @@ const Videos = () => {
   function VideosLayout() {
     return (
       <>
-        <div className="bg-cyan-950 m-1 p-4 text-white rounded-lg">
+        <div className="bg-primary m-1 p-4 text-text rounded-lg">
           <h1>Videos Extra</h1>
         </div>
       </>

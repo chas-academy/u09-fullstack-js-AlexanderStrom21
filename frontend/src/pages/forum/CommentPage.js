@@ -14,7 +14,9 @@ const CommentPage = () => {
   useEffect(() => {
     const fetchThreads = async () => {
       try {
-        const response = await axios.get(`https://node-mongodb-api-4lo4.onrender.com/threads`);
+        const response = await axios.get(
+          `https://node-mongodb-api-4lo4.onrender.com/threads`
+        );
         setThreads(response.data);
         setLoading(false);
       } catch (err) {
@@ -51,14 +53,14 @@ const CommentPage = () => {
   }
 
   return (
-    <section className="bg-indigo-950 w-3/4 mx-auto rounded-lg pt-10">
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center rounded-lg">
+    <section className="bg-background w-3/4 mx-auto rounded-lg pt-10">
+      <div className="bg-primary text-text w-2/4 mx-auto text-center rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">
           {thread.author}: Comments
         </h1>
-        <ul className="space-y-4 text-black flex flex-col items-center pb-5">
+        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           <div
-            className="bg-gray-100 m-2 w-3/4 p-4 pt-2 rounded-lg"
+            className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
             key={thread._id}
           >
             <strong className="flex justify-self-start">{thread.author}</strong>
@@ -77,13 +79,13 @@ const CommentPage = () => {
       </div>
       {commentsLoading && <p>Loading comments...</p>}
       {commentsError && <p>Error fetching comments: {commentsError}</p>}
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+      <div className="bg:background  text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">Comments:</h1>
-        <div className="space-y-4 text-black flex flex-col items-center pb-5">
+        <div className="space-y-4 text-dark flex flex-col items-center pb-5">
           {comments.map((comment) => (
             <div
               key={comment._id}
-              className="bg-gray-100 m-2 w-3/4 p-4 pt-2 rounded-lg"
+              className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
             >
               <strong className="flex justify-self-start py-4">
                 {comment.author}

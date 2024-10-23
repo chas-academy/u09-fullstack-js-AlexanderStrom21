@@ -84,7 +84,7 @@ const FetchThreadsAndComments = () => {
   return (
     <div>
       {userAndAuthorMatch || userCommentsAndAuthorMatch ? (
-        <div className="bg-cyan-900 text-white w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
+        <div className="bg-primary text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5 rounded-lg">
           {user ? (
             user.isAdmin ? (
               <h2 className="text-2xl font-bold mb-4">All Threads</h2>
@@ -96,11 +96,11 @@ const FetchThreadsAndComments = () => {
           )}
           {userThreads.length > 0 ? (
             userThreads.map((thread) => (
-              <div key={thread._id} className="m-4 p-6 rounded-lg bg-cyan-950">
+              <div key={thread._id} className="m-4 p-6 rounded-lg bg-primary">
                 <h3 className="text-xl font-bold">{thread.title}</h3>
                 <p className="mt-2">{thread.content}</p>
                 <button
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="px-4 py-2 bg-warning text-text rounded hover:bg-secondaryhover"
                   onClick={() => threadDelete(thread._id)}
                 >
                   Delete Thread
@@ -118,19 +118,19 @@ const FetchThreadsAndComments = () => {
           <h2 className="text-2xl font-bold mb-4">Your Comments</h2>
           {userThreadComments.length > 0 ? (
             userThreadComments.map((comment) => (
-              <div key={comment._id} className="bg-cyan-950 m-4 p-4 rounded-lg">
+              <div key={comment._id} className="bg-primary m-4 p-4 rounded-lg">
                 <p>
                   <strong>Comment:</strong> {comment.comment}
                 </p>
                 <button
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="px-4 py-2 bg-warning text-text rounded hover:bg-primaryhover"
                   onClick={() =>
                     handleCommentDelete(comment.threadId, comment._id)
                   }
                 >
                   Delete Comment
                 </button>
-                <p className="text-sm text-white">
+                <p className="text-sm text-text">
                   Thread: {comment.threadTitle} | Date:{" "}
                   {new Date(comment.date).toLocaleString()}
                 </p>

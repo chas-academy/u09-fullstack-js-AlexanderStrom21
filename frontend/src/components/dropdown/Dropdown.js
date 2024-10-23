@@ -28,7 +28,7 @@ const Dropdown = ({ trigger, children }) => {
       </button>
 
       {isDropdownOpen && (
-        <div className="absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10">
+        <div className="absolute right-0 mt-2 w-48 bg-secondary border rounded-lg shadow-lg shadow-accent z-10">
           {children}
         </div>
       )}

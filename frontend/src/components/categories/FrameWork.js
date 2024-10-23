@@ -9,7 +9,7 @@ const FrameWork = () => {
   function FrameWorkLayout() {
     return (
       <>
-        <div className="bg-cyan-950 m-1 p-4 text-white rounded-lg">
+        <div className="bg-primary m-1 p-4 text-text rounded-lg">
           <h1>Frame Works Extra</h1>
         </div>
       </>

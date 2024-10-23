@@ -9,11 +9,11 @@ const DropdownContentNotLoggedIn = () => {
       <Dropdown
         trigger={<img src={ProfileLogo} alt="Profile" className="w-10 h-10" />}
       >
-        <ul>
+        <ul className="text-dark">
           <li>
             <NavLink to="/Login">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
                 onClick={() => handleOptionClick("Login")}
               >
                 Login
@@ -23,7 +23,7 @@ const DropdownContentNotLoggedIn = () => {
           <li>
             <NavLink to="/Register">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
                 onClick={() => handleOptionClick("Register")}
               >
                 Register

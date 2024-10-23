@@ -26,13 +26,15 @@ const CreateThreadComment = ({ threadId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      
-      await axios.post(`https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}/comment`, {
-        author: formData.author,
-        comment: formData.comment,
-      });
+      await axios.post(
+        `https://node-mongodb-api-4lo4.onrender.com/thread/${threadId}/comment`,
+        {
+          author: formData.author,
+          comment: formData.comment,
+        }
+      );
       alert("Comment created successfully!");
-      window.location.reload(); 
+      window.location.reload();
     } catch (error) {
       console.error("Error creating comment:", error);
     }
@@ -42,13 +44,13 @@ const CreateThreadComment = ({ threadId }) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="bg-cyan-950 text-white w-1/4 mx-auto text-center mt-8 rounded-lg">
+    <div className="bg-primary text-text w-1/4 mx-auto text-center mt-8 rounded-lg">
       <h1 className="text-3xl font-bold pt-5 mb-6">Write your comment</h1>
-      <div className=" text-black flex justify-center items-center pb-5">
+      <div className=" text-dark flex justify-center items-center pb-5">
         <form onSubmit={handleSubmit}>
           <div className="mb-4 ">
             <textarea
-              className="text-black mb-4 h-20"
+              className="text-dark mb-4 h-20"
               placeholder="Write your comment here..."
               name="comment"
               value={formData.comment}
@@ -59,7 +61,7 @@ const CreateThreadComment = ({ threadId }) => {
           <div>
             <p className="text-white">Author: {user.username}</p>
           </div>
-          <div className="flex bg-gray-500 p-2 rounded-lg mt-3 text-white">
+          <div className="flex bg-info p-2 rounded-lg mt-3 text-text">
             <button type="submit">Create Comment</button>
           </div>
         </form>

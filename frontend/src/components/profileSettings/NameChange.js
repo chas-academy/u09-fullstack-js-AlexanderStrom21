@@ -66,15 +66,15 @@ const ProfileNameChange = () => {
   return (
     <>
       {user ? (
-        <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+        <div className="bg-primary text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
           <h1 className="text-3xl font-bold pt-5 mb-6">
             Update Your user information
           </h1>
-          <ul className="space-y-4 text-black flex flex-col items-center pb-5">
+          <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <input
-                  className="text-black"
+                  className="text-dark"
                   placeholder="Email"
                   type="text"
                   name="email"
@@ -84,7 +84,7 @@ const ProfileNameChange = () => {
               </div>
               <div className="mb-4">
                 <input
-                  className="text-black"
+                  className="text-dark"
                   placeholder="Password"
                   type="text"
                   name="password"
@@ -92,7 +92,7 @@ const ProfileNameChange = () => {
                   onChange={handleChange}
                 />
               </div>
-              <div className="flex bg-gray-500 p-2 rounded-lg mt-3 text-white">
+              <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-secondaryhover">
                 <button type="submit">Update User</button>
               </div>
             </form>

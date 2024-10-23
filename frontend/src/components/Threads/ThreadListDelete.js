@@ -39,13 +39,13 @@ const ThreadListDelete = () => {
 
   return (
     <>
-      <div className="bg-cyan-950 text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
+      <div className="bg-primary text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
         <h1 className="text-3xl font-bold pt-5 mb-6">Forum Threads</h1>
-        <ul className="space-y-4 text-black flex flex-col items-center pb-5">
+        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
           {threads.map((thread) => {
             return (
               <div
-                className="bg-gray-100 m-2 w-3/4 p-4 pt-2 rounded-lg"
+                className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
                 key={thread._id}
               >
                 <strong className="flex justify-self-start">
@@ -61,7 +61,7 @@ const ThreadListDelete = () => {
                       : "No Date Available"}
                   </small>
                   <button
-                    className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                    className="px-4 py-2 bg-warning text-text rounded hover:bg-primaryhover"
                     onClick={() => handleDelete(thread._id)}
                   >
                     Delete

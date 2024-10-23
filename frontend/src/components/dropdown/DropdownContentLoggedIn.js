@@ -11,10 +11,10 @@ const DropdownContentLoggedIn = () => {
         trigger={<img src={ProfileLogo} alt="Profile" className="w-10 h-10" />}
       >
         <ul>
-          <li>
+          <li className="text-dark">
             <NavLink to="/Profile">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
                 onClick={() => handleOptionClick("Profile")}
               >
                 Profile
@@ -24,7 +24,7 @@ const DropdownContentLoggedIn = () => {
           <li>
             <NavLink to="/Settings">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-left hover:bg-primaryhover"
                 onClick={() => handleOptionClick("Settings")}
               >
                 Settings
@@ -34,7 +34,7 @@ const DropdownContentLoggedIn = () => {
           <li>
             <NavLink to="/Dashboard">
               <button
-                className="block w-full px-4 py-2 text-left hover:bg-gray-200"
+                className="block w-full px-4 py-2 text-left bg-primaryhover"
                 onClick={() => handleOptionClick("DashBoard")}
               >
                 DashBoard
