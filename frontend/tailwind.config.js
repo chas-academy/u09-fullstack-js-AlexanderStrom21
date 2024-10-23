@@ -7,14 +7,15 @@ module.exports = {
         sans: ["Poppins", "sans-serif"], // Set Poppins as the standard font
       },
       backgroundImage: {
-        "main-gradient": "linear-gradient(to top, #c471f5 0%, #fa71cd 100%)", //bg-main-gradient
+        "main-gradient": "linear-gradient(to top, #9b59b6 0%, #d94d92 100%)", //bg-main-gradient
         "secondary-gradient": "linear-gradient(to right, #ff7e5f, #feb47b)",
       },
       colors: {
-        primary: "#c471f5", // Use for buttons, links, etc.
-        secondary: "#fa71cd", // Use for accents
+        background: "#5e4b8b", //Cards
+        primary: "#5e4b8b", // Use for buttons, links, etc.
+        secondary: "#7a6a9b", // Use for accents
         text: "#ffffff", // Main text color
-        background: "rgba(255, 255, 255, 0.9)", // Background for cards
+        navbar: "#1a202c", // Dark background for navbar
         muted: "#f0f4f8", // Light background for subtle sections
         dark: "#2d3748", // Dark text color for better readability on light backgrounds
         accent: "#4A5568", // Neutral accent for borders, shadows, etc.

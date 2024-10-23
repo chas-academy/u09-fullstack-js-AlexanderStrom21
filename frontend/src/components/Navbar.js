@@ -17,7 +17,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="bg-primary text-black">
+    <nav className="bg-navbar text-black">
       <div className="grid grid-cols-8 p-2 items-center">
         <div className="flex w-14 h-14 ml-10 items-center">
           <NavLink to="/">
