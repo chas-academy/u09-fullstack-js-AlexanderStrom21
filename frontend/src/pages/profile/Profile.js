@@ -16,28 +16,33 @@ const Profile = () => {
   }
 
   return (
-    <div className="text-text w-6/6 mx-auto text-center mt-8 pt-5 pb-5">
-      {user ? (
-        <div className="m-4 p-6 rounded-lg bg-background w-2/4 text-text pb-5">
-          <h1 className="text-xl font-bold">Welcome, {user.username}!</h1>
-          <p className="mt-s2">Email: {user.email}</p>
-          <p className="mt-2">Role: {user.isAdmin ? "Admin" : "User"}</p>
+    <>
+      <div className="flex flex-col items-center">
+        {user ? (
+          <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg p-6">
+            <h1 className="text-xl font-bold">Welcome, {user.username}!</h1>
+            <p className="mt-2">Email: {user.email}</p>
+            <p className="mt-2">Role: {user.isAdmin ? "Admin" : "User"}</p>
+          </div>
+        ) : (
+          <p>No user data found.</p>
+        )}
 
-          {user.isAdmin && (
-            <div>
-              <div className="m-4 p-6 rounded-lg bg-background w-2/4 text-text pb-5">
+        {user && user.isAdmin && (
+          <div className="mt-8 w-2/4">
+            <div className="bg-background text-text text-center rounded-lg p-4">
+              <h2 className="text-lg font-bold mb-4">Admin Actions</h2>
+              <div className="m-4 p-6 rounded-lg bg-background text-text pb-5">
                 <AllUsers />
               </div>
-              <div className="m-4 p-6 rounded-lg bg-background w-2/4 text-text pb-5">
+              <div className="m-4 p-6 rounded-lg bg-background text-text pb-5">
                 <RegisterAUser />
               </div>
             </div>
-          )}
-        </div>
-      ) : (
-        <p>No user data found.</p> // Handle case where user data is null
-      )}
-    </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

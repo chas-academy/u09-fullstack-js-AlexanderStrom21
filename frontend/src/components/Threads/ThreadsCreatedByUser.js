@@ -29,7 +29,7 @@ const ThreadsCreatedByUser = () => {
                       {thread.content}
                     </p>
                     <div className="flex justify-between w-full ">
-                      <small className="self-end">
+                      <small className="self-end text-text">
                         Date:
                         {thread.date
                           ? new Date(thread.date).toLocaleString()

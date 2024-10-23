@@ -105,7 +105,7 @@ const FetchThreadsAndComments = () => {
                 >
                   Delete Thread
                 </button>
-                <p className="text-sm mt-4">
+                <p className="text-sm mt-4 text-text">
                   Author: {thread.author} | Date:{" "}
                   {new Date(thread.date).toLocaleString()}
                 </p>

@@ -51,7 +51,7 @@ const FetchThreadsById = ({ forumType }) => {
                 <h2 className="text-lg font-bold">{thread.title}</h2>
                 <p className="flex justify-self-start py-4">{thread.content}</p>
                 <div className="flex justify-between w-full ">
-                  <small className="self-end">
+                  <small className="self-end text-text">
                     Date:
                     {thread.date
                       ? new Date(thread.date).toLocaleString()
