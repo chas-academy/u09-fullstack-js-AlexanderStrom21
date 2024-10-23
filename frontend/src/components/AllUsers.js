@@ -42,7 +42,7 @@ const AllUsers = () => {
 
   return (
     <>
-      <div className="bg-background text-white w-4/5 mx-auto text-center mt-8 rounded-lg pb-4">
+      <div className="bg-background text-white w-3/4 mx-auto text-center mt-8 rounded-lg pb-4">
         <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
         <ul className="space-y-4 W-3/4 text-dark flex flex-col items-center pb-5">
           {data.map((user) => (
@@ -52,7 +52,7 @@ const AllUsers = () => {
             >
               <span>{user.username}</span>
               <button
-                className="bg-warning text-text rounded hover:bg-error pl-3"
+                className="p-3 text-center bg-warning text-text rounded hover:bg-error"
                 onClick={() => handleDelete(user._id)}
               >
                 Delete
