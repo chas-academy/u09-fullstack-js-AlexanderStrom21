@@ -25,12 +25,16 @@ const ProfileNameChange = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const token = localStorage.getItem("token");
     try {
       const response = await axios.put(
         `https://node-mongodb-api-4lo4.onrender.com/profile/`,
         formData,
         {
           withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
 
