@@ -35,6 +35,9 @@ exports.loginUser = async (email, password) => {
   return jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: "1h" });
 };
 
+// Logout user service
+exports.logoutUser = async () => {};
+
 // Get user profile service
 exports.getUserProfile = async (userId) => {
   return await User.findById(userId).select("-password");

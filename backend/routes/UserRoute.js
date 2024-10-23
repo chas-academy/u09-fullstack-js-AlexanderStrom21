@@ -11,5 +11,7 @@ router.post("/login", userController.login);
 router.get("/profile", authMiddleware, userController.getProfile);
 // Get all users
 router.get("/allUsers", userController.getAllUsers);
+// logout user
+router.post("/logout", authMiddleware, userController.logout);
 
 module.exports = router;

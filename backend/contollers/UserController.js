@@ -31,6 +31,11 @@ exports.login = async (req, res) => {
   }
 };
 
+// Logout user service
+exports.logout = (req, res) => {
+  res.status(200).json({ message: "Logout successful" });
+};
+
 // Fetch user profile
 exports.getProfile = async (req, res) => {
   try {
