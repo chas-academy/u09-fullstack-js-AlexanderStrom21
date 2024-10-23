@@ -1,7 +1,6 @@
 const express = require("express");
-const threadController = require("../controllers/ThreadController");
+const threadController = require("../contollers/ThreadController");
 const authMiddleware = require("../Middleware/AuthMiddleware");
-
 const router = express.Router();
 
 // Get all threads
