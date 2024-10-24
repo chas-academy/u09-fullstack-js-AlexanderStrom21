@@ -35,35 +35,29 @@ const FetchThreadsById = ({ forumType }) => {
   }
 
   return (
-    <div>
-      <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
-        <h1 className="text-3xl font-bold pt-5 mb-6">Threads: {forumType}</h1>
-        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
-          {threads.map((thread) => {
-            return (
-              <div
-                className="bg-secondary m-2 w-3/4 p-4 pt-2 rounded-lg"
-                key={thread._id}
-              >
-                <strong className="flex justify-self-start">
-                  {thread.author}
-                </strong>
-                <h2 className="text-lg font-bold">{thread.title}</h2>
-                <p className="flex justify-self-start py-4">{thread.content}</p>
-                <div className="flex justify-between w-full ">
-                  <small className="self-end text-text">
-                    Date:
-                    {thread.date
-                      ? new Date(thread.date).toLocaleString()
-                      : "No Date Available"}
-                  </small>
-                  <GetThreadIdButton threadId={thread._id} />
-                </div>
-              </div>
-            );
-          })}
-        </ul>
-      </div>
+    <div className="bg-background text-text w-full max-w-lg mx-auto text-center mt-8 rounded-lg p-6 lg:max-w-screen-lg">
+      <h1 className="text-2xl font-bold pt-5 mb-6">Threads: {forumType}</h1>
+      <ul className="space-y-4">
+        {threads.map((thread) => (
+          <div
+            className="bg-secondary p-4 rounded-lg shadow-md"
+            key={thread._id}
+          >
+            <strong className="block text-left mb-2">{thread.author}</strong>
+            <h2 className="text-lg font-bold mb-2">{thread.title}</h2>
+            <p className="text-left mb-4">{thread.content}</p>
+            <div className="flex justify-between items-center text-sm text-text">
+              <span>
+                Date:{" "}
+                {thread.date
+                  ? new Date(thread.date).toLocaleString()
+                  : "No Date Available"}
+              </span>
+              <GetThreadIdButton threadId={thread._id} />
+            </div>
+          </div>
+        ))}
+      </ul>
     </div>
   );
 };

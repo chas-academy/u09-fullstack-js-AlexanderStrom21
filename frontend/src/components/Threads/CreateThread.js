@@ -41,46 +41,47 @@ const CreateThread = ({ forumType }) => {
 
   if (loading) return <p>Loading profile...</p>;
   if (error) return <p>Error: {error}</p>;
+
   return (
-    <>
-      <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
-        <h1 className="text-3xl font-bold pt-5 mb-6">
-          Create Thread in {forumType} Forum
-        </h1>
-        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
-          <form onSubmit={handleSubmit}>
-            <div className="mb-4">
-              <input
-                className="text-dark"
-                placeholder="Title"
-                type="text"
-                name="title"
-                value={formData.title}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <textarea
-                className="text-dark mb-4 w-full h-20"
-                placeholder="Content"
-                type="content"
-                name="content"
-                value={formData.content}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div>
-              <p className="text-text">Author: {user.username}</p>
-            </div>
-            <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-infohover">
-              <button type="submit">Create Thread</button>
-            </div>
-          </form>
-        </ul>
-      </div>
-    </>
+    <div className="bg-background text-text w-full max-w-lg text-center rounded-lg p-6 lg:max-w-screen-lg">
+      <h1 className="text-2xl font-bold pt-5 mb-6">
+        Create Thread in {forumType} Forum
+      </h1>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <input
+            className="w-full p-3 text-dark border rounded-lg border-gray-300 focus:outline-none focus:ring focus:ring-info"
+            placeholder="Title"
+            type="text"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <textarea
+            className="w-full p-3 text-dark border rounded-lg border-gray-300 focus:outline-none focus:ring focus:ring-info h-24 resize-none"
+            placeholder="Content"
+            name="content"
+            value={formData.content}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <p className="text-sm text-gray-500">Author: {user.username}</p>
+        </div>
+        <div>
+          <button
+            type="submit"
+            className="p-5 bg-info rounded-lg text-white font-semibold hover:bg-infohover transition duration-300"
+          >
+            Create Thread
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 

@@ -6,9 +6,9 @@ const UseJavaForum = () => {
   const isLoggedIn = useAuth();
 
   return (
-    <div>
+    <div className="h-screen p-6">
       {isLoggedIn ? (
-        <div>
+        <div className="space-y-8">
           <CreateThread forumType="Java" />
           <FetchThreadsById forumType="Java" />
         </div>

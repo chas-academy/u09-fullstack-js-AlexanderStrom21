@@ -43,42 +43,50 @@ const Register = () => {
   };
 
   return (
-    <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
-      <h1 className="text-3xl font-bold pt-5 mb-6">Register a user</h1>
-      <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
+    <div className="flex justify-center w-full px-2">
+      <div className="bg-background w-full max-w-2xl text-text text-center mt-8 rounded-lg p-6 shadow-lg">
+        <h1 className="text-xl text-white font-bold mb-4">Register a user</h1>
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col grid justify-items-center w-full text-dark"
+          className="space-y-4 items-center flex flex-col lg:max-w-screen-lg"
         >
           <input
-            className="flex m-2 w-2/4"
+            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info "
             type="text"
             name="username"
             placeholder="Username"
             onChange={handleChange}
             required
+            aria-label="Username"
           />
           <input
-            className="flex m-2 w-2/4"
+            className="p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info "
             type="email"
             name="email"
             placeholder="Email"
             onChange={handleChange}
             required
+            aria-label="Email"
           />
           <input
-            className="flex m-2 w-2/4"
+            className="flex p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info "
             type="password"
             name="password"
             placeholder="Password"
             onChange={handleChange}
             required
+            aria-label="Password"
           />
-          <div className="flex bg-info text-white p-2 rounded-lg mt-3 hover:bg-infohover">
-            <button type="submit">Register</button>
+          <div className="flex justify-center">
+            <button
+              type="submit"
+              className="bg-info text-white py-2 px-4 rounded-lg hover:bg-infohover transition duration-300"
+            >
+              Register
+            </button>
           </div>
         </form>
-      </ul>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,9 @@ import ProfileNameChange from "../../components/profileSettings/NameChange";
 const UserSettings = () => {
   return (
     <>
-      <ProfileNameChange />
+      <div className="m-2">
+        <ProfileNameChange />
+      </div>
     </>
   );
 };

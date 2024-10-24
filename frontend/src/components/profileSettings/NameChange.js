@@ -64,44 +64,37 @@ const ProfileNameChange = () => {
   }
 
   return (
-    <>
-      {user ? (
-        <div className="bg-background text-white w-2/4 mx-auto text-center mt-8 rounded-lg">
-          <h1 className="text-3xl font-bold pt-5 mb-6">
-            Update Your user information
-          </h1>
-          <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
-            <form onSubmit={handleSubmit}>
-              <div className="mb-4">
-                <input
-                  className="text-dark"
-                  placeholder="Email"
-                  type="text"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="mb-4">
-                <input
-                  className="text-dark"
-                  placeholder="Password"
-                  type="text"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="flex bg-info p-2 rounded-lg mt-3 text-white hover:bg-infohover">
-                <button type="submit">Update User</button>
-              </div>
-            </form>
-          </ul>
+    <div className="bg-background text-dark w-full max-w-md mx-auto text-center mt-8 rounded-lg p-6 shadow-md">
+      <h1 className="text-3xl font-bold mb-6">Update Your User Information</h1>
+      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+        <input
+          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-info transition duration-200"
+          type="email"
+          name="email"
+          placeholder="Email"
+          value={formData.email}
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-info transition duration-200"
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+          required
+        />
+        <div className="flex justify-center">
+          <button
+            type="submit"
+            className="bg-info text-white py-2 px-4 rounded-lg hover:bg-infohover transition duration-300"
+          >
+            Update User
+          </button>
         </div>
-      ) : (
-        <p>Cant fetch your profile.. Try logout and login!</p>
-      )}
-    </>
+      </form>
+    </div>
   );
 };
 

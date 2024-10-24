@@ -5,9 +5,9 @@ const UseCSharpForum = () => {
   const isLoggedIn = useAuth();
 
   return (
-    <div>
+    <div className="h-screen p-6">
       {isLoggedIn ? (
-        <div>
+        <div className="space-y-8">
           <CreateThread forumType="CSharp" />
           <FetchThreadsById forumType="CSharp" />
         </div>

@@ -53,22 +53,18 @@ const CommentPage = () => {
   }
 
   return (
-    <section className="bg-background w-3/4 mx-auto rounded-lg pt-10">
-      <div className="bg-primary text-text w-2/4 mx-auto text-center rounded-lg">
-        <h1 className="text-3xl font-bold pt-5 mb-6">
-          {thread.author}: Comments
-        </h1>
-        <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
-          <div
-            className="bg-primary m-2 w-3/4 p-4 pt-2 rounded-lg"
-            key={thread._id}
-          >
-            <strong className="flex justify-self-start">{thread.author}</strong>
-            <h2 className="text-lg font-bold">{thread.title}</h2>
-            <p className="flex justify-self-start py-4">{thread.content}</p>
-            <div className="flex justify-between w-full ">
-              <small className="self-end text-text">
-                Date:
+    <section className="mt-10 w-full max-w-lg mx-auto lg:max-w-screen-lg px-2">
+      {/* Thread Section */}
+      <div className="bg-background text-text w-full text-center rounded-lg p-6">
+        <h1 className="text-2xl font-bold mb-6">{thread.author}: Comments</h1>
+        <ul className="space-y-4">
+          <div className="bg-primary p-4 rounded-lg shadow-md" key={thread._id}>
+            <strong className="block text-left mb-2">{thread.author}</strong>
+            <h2 className="text-lg font-bold mb-2">{thread.title}</h2>
+            <p className="text-left mb-4">{thread.content}</p>
+            <div className="flex text-sm text-text justify-end p-2">
+              <small>
+                Date:{" "}
                 {thread.date
                   ? new Date(thread.date).toLocaleString()
                   : "No Date Available"}
@@ -77,20 +73,36 @@ const CommentPage = () => {
           </div>
         </ul>
       </div>
-      {commentsLoading && <p>Loading comments...</p>}
-      {commentsError && <p>Error fetching comments: {commentsError}</p>}
-      <div className="bg:background  text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
-        <h1 className="text-3xl font-bold pt-5 mb-6">Comments:</h1>
-        <div className="space-y-4 text-dark flex flex-col items-center pb-5">
+
+      {/* Comments Loading/Error */}
+      {commentsLoading && (
+        <p className="text-center mt-4">Loading comments...</p>
+      )}
+      {commentsError && (
+        <p className="text-center mt-4 text-red-500">
+          Error fetching comments: {commentsError}
+        </p>
+      )}
+
+      {/* Comments Section */}
+      <div className="bg-background text-text w-full text-center rounded-lg p-6 mt-10">
+        <h1 className="text-2xl font-bold mb-6">Comments:</h1>
+        <div className="space-y-4">
           {comments.map((comment) => (
             <div
               key={comment._id}
-              className="bg-primary m-2 w-3/4 p-4 pt-2 rounded-lg"
+              className="bg-primary p-4 rounded-lg shadow-md"
             >
-              <strong className="flex justify-self-start py-4">
-                {comment.author}
-              </strong>
-              <p>{comment.comment}</p>
+              <strong className="block text-left mb-2">{comment.author}</strong>
+              <p className="text-left">{comment.comment}</p>
+              <div className="flex text-sm text-text justify-end p-2">
+                <small>
+                  Date:{" "}
+                  {thread.date
+                    ? new Date(thread.date).toLocaleString()
+                    : "No Date Available"}
+                </small>
+              </div>
             </div>
           ))}
         </div>

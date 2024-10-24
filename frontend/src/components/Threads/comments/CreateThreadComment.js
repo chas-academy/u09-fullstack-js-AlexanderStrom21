@@ -44,13 +44,13 @@ const CreateThreadComment = ({ threadId }) => {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div className="bg-background text-text w-1/4 mx-auto text-center mt-8 rounded-lg">
-      <h1 className="text-3xl font-bold pt-5 mb-6">Write your comment</h1>
-      <div className=" text-dark flex justify-center items-center pb-5">
-        <form onSubmit={handleSubmit}>
-          <div className="mb-4 ">
+    <div className="bg-background text-text w-full max-w-lg mx-auto text-center mt-8 rounded-lg p-6 mb-10 lg:max-w-screen-sm">
+      <h1 className="text-2xl font-bold mb-6">Write your comment</h1>
+      <div className="text-dark flex justify-center items-center pb-5">
+        <form onSubmit={handleSubmit} className="w-full">
+          <div className="mb-4">
             <textarea
-              className="text-dark mb-4 h-20"
+              className="w-full text-dark p-2 rounded-lg border-2 border-gray-300"
               placeholder="Write your comment here..."
               name="comment"
               value={formData.comment}
@@ -58,12 +58,16 @@ const CreateThreadComment = ({ threadId }) => {
               required
             />
           </div>
-          <div>
+          <div className="mb-4">
             <p className="text-text">Author: {user.username}</p>
           </div>
-          <div className="flex bg-info text-white p-2 rounded-lg mt-3 text-text hover:bg-infohover">
-            <button type="submit">Create Comment</button>
-          </div>
+
+          <button
+            type="submit"
+            className="bg-info text-white py-2 px-4 rounded-lg hover:bg-infohover transition duration-300"
+          >
+            Create Comment
+          </button>
         </form>
       </div>
     </div>
