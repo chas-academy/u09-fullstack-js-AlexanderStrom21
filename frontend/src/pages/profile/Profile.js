@@ -31,7 +31,7 @@ const Profile = () => {
         <p className="text-center text-text mt-4">No user data found.</p>
       )}
 
-      {user && user.isAdmin && (
+      {user.isAdmin && (
         <div className="sm:max-w-screen md:max-w-screen lg:max-w-screen p-2 flex flex-col items-center">
           <AllUsers />
           <RegisterAUser />
