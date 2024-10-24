@@ -43,42 +43,43 @@ const RegisterAUser = () => {
   };
 
   return (
-    <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg">
-      <h1 className="text-3xl font-bold pt-5 mb-6">Register a user</h1>
-      <ul className="space-y-4 text-dark flex flex-col items-center pb-5">
-        <form
-          onSubmit={handleSubmit}
-          className="flex flex-col grid justify-items-center w-full text-dark"
+    <div className="bg-background w-full text-text text-center mt-8 rounded-lg p-6 shadow-lg">
+      <h1 className="text-xl font-bold mb-4">Register a user</h1>
+      <form
+        onSubmit={handleSubmit}
+        className="space-y-4 overflow-y-auto flex flex-col items-center"
+      >
+        <input
+          className="flex m-2 p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info"
+          type="text"
+          name="username"
+          placeholder="Username"
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="flex m-2 p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <input
+          className="flex m-2 p-2 rounded border border-gray-300 focus:outline-none focus:ring focus:ring-info"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+        <button
+          type="submit"
+          className="bg-info text-white p-2 rounded-lg mt-3 hover:bg-infohover transition duration-300 ease-in-out"
         >
-          <input
-            className="flex m-2"
-            type="text"
-            name="username"
-            placeholder="Username"
-            onChange={handleChange}
-            required
-          />
-          <input
-            className="flex m-2"
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={handleChange}
-            required
-          />
-          <input
-            className="flex m-2"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={handleChange}
-            required
-          />
-          <div className="flex bg-info text-white p-2 rounded-lg mt-3 hover:bg-infohover">
-            <button type="submit">Register</button>
-          </div>
-        </form>
-      </ul>
+          Register
+        </button>
+      </form>
     </div>
   );
 };

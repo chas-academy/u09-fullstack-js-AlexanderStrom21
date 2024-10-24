@@ -7,44 +7,37 @@ const Profile = () => {
 
   // Show loading message while fetching
   if (loading) {
-    return <p>Loading profile...</p>;
+    return <p className="text-center text-text mt-4">Loading profile...</p>;
   }
 
   // Handle errors from fetching
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="text-center text-error mt-4">Error: {error}</p>;
   }
 
   return (
-    <>
-      <div className="flex flex-col items-center">
-        {user ? (
-          <div className="bg-background text-text w-2/4 mx-auto text-center mt-8 rounded-lg p-6">
-            <h1 className="text-xl font-bold">Welcome, {user.username}!</h1>
-            <p className="mt-2">Email: {user.email}</p>
-            <p className="mt-2">Role: {user.isAdmin ? "Admin" : "User"}</p>
-          </div>
-        ) : (
-          <p>No user data found.</p>
-        )}
+    <div className="PROFILE flex flex-col self-center sm:w-screen sm:p-2 md:w-screen sm:max-w-sm w-screen  md:p-0">
+      {user ? (
+        <div className="bg-background text-text h-fit text-center max-w-full mt-8 rounded-lg p-6 shadow-lg m-2 md:max-w-md">
+          <h1 className="text-xl sm:text-2xl font-bold">
+            Welcome, {user.username}!
+          </h1>
+          <p className="mt-4 text-sm sm:text-base">Email: {user.email}</p>
+          <p className="mt-2 text-sm sm:text-base">
+            Role: {user.isAdmin ? "Admin" : "User"}
+          </p>
+        </div>
+      ) : (
+        <p className="text-center text-text mt-4">No user data found.</p>
+      )}
 
-        {user && user.isAdmin && (
-          <div className="mt-8 w-3/4 flex flex-col items-center">
-            <div className="bg-background w-full text-text text-center rounded-lg p-4 mb-8">
-              <h2 className="text-lg font-bold mb-4">Delete User</h2>
-              <div className="m-4 p-6 rounded-lg bg-background text-text pb-5">
-                <AllUsers />
-              </div>
-            </div>
-            <div className="bg-background w-2/4 text-text text-center rounded-lg p-4">
-              <div className="m-4 p-6 rounded-lg bg-background text-text pb-5">
-                <RegisterAUser />
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-    </>
+      {user && user.isAdmin && (
+        <div className="sm:max-w-screen md:max-w-screen lg:max-w-screen p-2 flex flex-col items-center">
+          <AllUsers />
+          <RegisterAUser />
+        </div>
+      )}
+    </div>
   );
 };
 

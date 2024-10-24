@@ -33,35 +33,35 @@ const AllUsers = () => {
   };
 
   if (loading) {
-    return <p>Loading users...</p>;
+    return <p className="text-center text-text mt-4">Loading users...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p className="text-center text-error mt-4">Error: {error}</p>;
   }
 
   return (
-    <>
-      <div className="bg-background text-white w-3/4 mx-auto text-center mt-8 rounded-lg pb-4">
-        <h1 className="text-3xl font-bold pt-5 mb-6">All Users</h1>
-        <ul className="space-y-4 text-text flex flex-col items-center pb-5">
-          {data.map((user) => (
-            <li
-              className="bg-secondary m-2 w-full p-4 rounded-lg flex justify-between items-center mr-1"
-              key={user._id}
+    <div className="bg-background text-text w-full text-center mt-8 rounded-lg p-6 shadow-lg">
+      <h1 className="text-xl font-bold pt-5 mb-4">All Users</h1>
+      <ul className="space-y-4 h-fit overflow-y-auto">
+        {data.map((user) => (
+          <li
+            className="bg-primary text-text p-4 rounded-lg flex justify-between items-center w-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out mb-4"
+            key={user._id}
+          >
+            <span className="text-base sm:text-lg md:text-xl font-semibold mb-2 break-all mr-4">
+              {user.username}
+            </span>
+            <button
+              className="bg-warning hover:bg-error text-white px-4 py-2 rounded-md text-sm sm:text-base transition-colors duration-300 ease-in-out"
+              onClick={() => handleDelete(user._id)}
             >
-              <span>{user.username}</span>
-              <button
-                className="py-px px-3 text-center bg-warning text-text rounded hover:bg-error"
-                onClick={() => handleDelete(user._id)}
-              >
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </>
+              Delete
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
