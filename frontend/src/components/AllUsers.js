@@ -11,7 +11,7 @@ const AllUsers = () => {
   const handleDelete = async (userId) => {
     try {
       const response = await axios.delete(
-        `https://node-mongodb-api-4lo4.onrender.com/users/${userId}`,
+        `https://node-mongodb-api-4lo4.onrender.com/profile/${userId}`,
         {
           withCredentials: true,
         }
