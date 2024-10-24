@@ -48,7 +48,13 @@ exports.getAllUsers = async () => {
   return await User.find({}, "-password");
 };
 
+//update User Profile
 exports.updateUserProfile = async (userId, updateData) => {
+  if (updateData.password) {
+    const salt = await bcrypt.genSalt(10);
+    updateData.password = await bcrypt.hash(updateData.password, salt);
+  }
+
   return await User.findByIdAndUpdate(userId, updateData, {
     new: true,
     runValidators: true,
