@@ -16,7 +16,7 @@ const Profile = () => {
   }
 
   return (
-    <div className="PROFILE flex flex-col self-center sm:w-screen sm:p-2 md:w-screen sm:max-w-sm w-screen  md:p-0">
+    <div className="flex flex-col self-center sm:w-screen sm:p-2 md:w-screen sm:max-w-sm w-screen md:p-0">
       {user ? (
         <div className="bg-background text-text h-fit text-center max-w-full mt-8 rounded-lg p-6 shadow-lg m-2 md:max-w-md">
           <h1 className="text-xl sm:text-2xl font-bold">

@@ -1,63 +1,34 @@
+import { NavLink } from "react-router-dom";
+
 import CSharp from "../assets/CSharp.svg";
 import CPlus from "../assets/C++.svg";
 import Java from "../assets/Java.svg";
 import JavaScript from "../assets/JavaScript.svg";
 import Php from "../assets/Php.svg";
 
-import { NavLink } from "react-router-dom";
+const languages = [
+  { name: "C#", path: "/CSharp", logo: CSharp },
+  { name: "Java", path: "/Java", logo: Java },
+  { name: "JavaScript", path: "/JavaScript", logo: JavaScript },
+  { name: "C++", path: "/CPlus", logo: CPlus },
+  { name: "PHP", path: "/Php", logo: Php },
+];
 
 const HomeCards = () => {
   return (
-    <>
-      <section className="flex justify-evenly">
-        <div className="flex m-5 flex-wrap justify-center">
-          <div className="bg-background m-5 p-4 text-white">
-            <NavLink to="/CSharp">
-              <div>
-                <img src={CSharp} alt="C# Logo" />
-              </div>
-              <h1 className="flex justify-center p-5">C#</h1>
-            </NavLink>
-          </div>
-
-          <div className="bg-background m-5 p-4 text-white">
-            <NavLink to="/Java">
-              <div>
-                <img src={Java} alt="Java Logo" />
-              </div>
-              <h1 className="flex justify-center p-5">Java</h1>
-            </NavLink>
-          </div>
-
-          <div className="bg-background m-5 p-4 text-white">
-            <NavLink to="/JavaScript">
-              <div>
-                <img src={JavaScript} alt="JavaScript Logo" />
-              </div>
-              <h1 className="flex justify-center p-5">JavaScript</h1>
-            </NavLink>
-          </div>
-
-          <div className="bg-background m-5 p-4 text-white">
-            <NavLink to="/CPlus">
-              <div>
-                <img src={CPlus} alt="C++ Logo" />
-              </div>
-              <h1 className="flex justify-center p-5">C++</h1>
-            </NavLink>
-          </div>
-
-          <div className="bg-background m-5 p-4 text-white">
-            <NavLink to="/Php">
-              <div>
-                <img src={Php} alt="Php Logo" />
-              </div>
-              <h1 className="flex justify-center p-5">PHP</h1>
-            </NavLink>
-          </div>
+    <section className="max-w-md flex flex-wrap">
+      {languages.map(({ name, path, logo }) => (
+        <div
+          key={name}
+          className="bg-background text-text rounded-lg shadow-lg m-5 w-full "
+        >
+          <NavLink to={path} className="flex flex-row items-center p-4 ">
+            <img className="rounded-lg mr-5" src={logo} alt={`${name} Logo`} />
+            <h1 className="">{name}</h1>
+          </NavLink>
         </div>
-      </section>
-    </>
+      ))}
+    </section>
   );
 };
 
