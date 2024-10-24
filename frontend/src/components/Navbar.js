@@ -17,21 +17,21 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className="bg-navbar text-black">
-      <div className="grid grid-cols-8 p-2 items-center">
-        <div className="flex w-14 h-14 ml-10 items-center">
-          <NavLink to="/">
-            <img src={SiteLogo} alt="Site Logo" className="flex items-center" />
-          </NavLink>
-        </div>
+    <nav className="bg-navbar text-black p-2 w-screen flex justify-between items-center px-4">
+      <NavLink to="/" className="flex">
+        <img
+          src={SiteLogo}
+          alt="Site Logo"
+          className="w-14 h-14 object-contain"
+        />
+      </NavLink>
 
-        <div className="flex w-14 h-14 ml-10 items-center place-content-end col-start-8">
-          {isLoggedIn ? (
-            <DropdownContentLoggedIn />
-          ) : (
-            <DropdownContentNotLoggedIn />
-          )}
-        </div>
+      <div>
+        {isLoggedIn ? (
+          <DropdownContentLoggedIn />
+        ) : (
+          <DropdownContentNotLoggedIn />
+        )}
       </div>
     </nav>
   );

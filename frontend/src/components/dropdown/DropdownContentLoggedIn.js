@@ -8,7 +8,7 @@ const DropdownContentLoggedIn = () => {
   return (
     <>
       <Dropdown
-        trigger={<img src={ProfileLogo} alt="Profile" className="w-10 h-10" />}
+        trigger={<img src={ProfileLogo} alt="Profile" className="w-11 h-11" />}
       >
         <ul>
           <li>
