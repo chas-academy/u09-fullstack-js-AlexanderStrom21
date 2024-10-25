@@ -19,11 +19,13 @@ const UpdateProfile = () => {
       const token = getToken();
       const updatedData = { email: formData.email };
 
-      if (formData.password) {
+      // If the password is filled, include it in the update
+      if (formData.password.trim()) {
         updatedData.password = formData.password;
       }
 
-      const result = await authService.updateUser(updatedData, token);
+      // Call the authService with userId in the URL
+      const result = await authService.updateUser(updatedData, token, user._id); // Pass userId
       if (result.success) {
         alert(result.message);
         navigate("/profile");
@@ -33,11 +35,12 @@ const UpdateProfile = () => {
     }
   );
 
+  // Prefill the form data once the user data is fetched
   useEffect(() => {
     if (user) {
       setFormData({
         email: user.email || "",
-        password: "",
+        password: "", // Leave password empty
       });
     }
   }, [user, setFormData]);
@@ -49,7 +52,6 @@ const UpdateProfile = () => {
   if (error) {
     return <p>Error: {error}</p>;
   }
-
   return (
     <div className="bg-background text-dark w-full max-w-md mx-auto text-center mt-8 rounded-lg p-6 shadow-md">
       <h1 className="text-3xl font-bold mb-6">Update Your User Information</h1>

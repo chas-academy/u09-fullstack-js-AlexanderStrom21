@@ -17,10 +17,13 @@ app.use(cookieParser());
 // CORS Configuration
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.DEV_FRONTEND_URL], // Frontend URLs
-    credentials: true, // Allow cookies to be sent
+    origin: [process.env.FRONTEND_URL, process.env.DEV_FRONTEND_URL],
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
   })
 );
+
+app.options("*", cors()); 
 
 // Connect to MongoDB
 mongoose

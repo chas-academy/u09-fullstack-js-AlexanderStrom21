@@ -71,24 +71,24 @@ export const authService = {
     }
   },
   //Update api Service
-  updateUser: async (formData, token) => {
+  updateUser: async (updatedData, token, userId) => {
     try {
       const response = await axios.put(
-        "https://your-api-url.com/profile",
-        formData,
+        `https://your-api-url.com/profile/${userId}`,
+        updatedData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
           },
+
+          withCredentials: true,
         }
       );
-      return { success: true, message: response.data.message };
-    } catch (err) {
-      return {
-        success: false,
-        message:
-          err.response?.data?.error || "An error occurred while updating.",
-      };
+      return response.data;
+    } catch (error) {
+      console.error("Error updating user:", error);
+      return { success: false, message: "Failed to update user" };
     }
   },
 };
