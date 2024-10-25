@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import UseFetchProfile from "../userHooks/FetchProfile";
 import UseFetchThreads from "./UseThreads";
+import useFetchProfile from "../userHooks/useFetchProfile";
 
 const useFetchThreadsByAuthorId = () => {
   const { threads } = UseFetchThreads();
-  const { user } = UseFetchProfile();
+  const { user } = useFetchProfile();
   const [userThreads, setUserThreads] = useState([]);
   const [userAndAuthorMatch, setUserAndAuthorMatch] = useState(false);
   const username = user?.username;

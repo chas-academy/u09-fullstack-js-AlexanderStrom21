@@ -3,13 +3,13 @@ import axios from "axios";
 import UseFetchThreads from "../../../hooks/threadHooks/UseThreads";
 import useFetchThreadsByAuthorId from "../../../hooks/threadHooks/FetchThreadsByAuthorId";
 import useFetchCommentsByAuthorId from "../../../hooks/commentHooks/UseFetchCommentsByAuthorId";
-import useAuth from "../../../hooks/userHooks/UseAuth";
 import useThreadListWithDelete from "../../../hooks/threadHooks/DeleteThread";
 import useCommentDelete from "../../../hooks/commentHooks/DeleteComment";
-import UseFetchProfile from "../../../hooks/userHooks/FetchProfile";
+import { useAuth } from "../../../hooks/authHooks/UseAuth";
+import useFetchProfile from "../../../hooks/userHooks/useFetchProfile";
 
 const FetchThreadsAndComments = () => {
-  const isLoggedIn = useAuth();
+  const isAuthenticated = useAuth();
   const { userAndAuthorMatch, userThreads } = useFetchThreadsByAuthorId();
   const { userCommentsAndAuthorMatch, userThreadComments } =
     useFetchCommentsByAuthorId();
@@ -17,7 +17,7 @@ const FetchThreadsAndComments = () => {
   const { handleDelete: threadDelete } = useThreadListWithDelete();
   const { handleDelete: commentDelete } = useCommentDelete();
   const [commentsMap, setCommentsMap] = useState({});
-  const { user } = UseFetchProfile();
+  const { user } = useFetchProfile();
 
   useEffect(() => {
     const fetchCommentsForThreads = async () => {
@@ -71,7 +71,7 @@ const FetchThreadsAndComments = () => {
     }
   };
 
-  if (!isLoggedIn) return null;
+  if (!isAuthenticated) return null;
 
   if (threadsLoading) {
     return <p>Loading threads...</p>;

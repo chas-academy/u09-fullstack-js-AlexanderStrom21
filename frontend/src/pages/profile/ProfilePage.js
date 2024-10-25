@@ -1,16 +1,24 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import AllUsers from "../../components/AllUsers";
-import UseFetchProfile from "../../hooks/userHooks/FetchProfile";
+import useFetchProfile from "../../hooks/userHooks/useFetchProfile";
 import RegisterAUser from "./RegisterUserAsAdmin";
 
-const Profile = () => {
-  const { user, loading, error } = UseFetchProfile(); // Call the hook
+const ProfilePage = () => {
+  const { user, loading, error } = useFetchProfile();
+  const navigate = useNavigate();
 
-  // Show loading message while fetching
+  // Redirect to login if no user is found
+  useEffect(() => {
+    if (!loading && !user) {
+      navigate("/login");
+    }
+  }, [loading, user, navigate]);
+
   if (loading) {
-    return <p className="text-center text-text mt-4">Loading profile...</p>;
+    return <p className="text-center text-text mt-4">Loading ProfilePage...</p>;
   }
 
-  // Handle errors from fetching
   if (error) {
     return <p className="text-center text-error mt-4">Error: {error}</p>;
   }
@@ -31,7 +39,7 @@ const Profile = () => {
         <p className="text-center text-text mt-4">No user data found.</p>
       )}
 
-      {user.isAdmin && (
+      {user?.isAdmin && (
         <div className="sm:max-w-screen md:max-w-screen lg:max-w-screen p-2 flex flex-col items-center">
           <AllUsers />
           <RegisterAUser />
@@ -41,4 +49,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ProfilePage;

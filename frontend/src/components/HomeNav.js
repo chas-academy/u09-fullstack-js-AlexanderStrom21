@@ -1,37 +1,26 @@
 import { NavLink } from "react-router-dom";
 
-const HomeNav = ({ CPlusNav, CSharpNav, JavaNav, JavaScriptNav, PhpNav }) => {
+const HomeNav = ({ navItems = [] }) => {
   return (
-    <nav className="flex justify-center">
+    <nav
+      className="flex justify-center"
+      aria-label="Programming Language Navigation"
+    >
       <ul className="flex">
-        {CPlusNav && (
-          <li className="p-4">
-            <NavLink to="/CPlus">C++</NavLink>
-          </li>
-        )}
-
-        {CSharpNav && (
-          <li className="p-4">
-            <NavLink to="/CSharp">C#</NavLink>
-          </li>
-        )}
- 
-        {JavaNav && (
-          <li className="p-4">
-            <NavLink to="/Java">Java</NavLink>
-          </li>
-        )}
-
-        {JavaScriptNav && (
-          <li className="p-4">
-            <NavLink to="/JavaScript">JavaScript</NavLink>
-          </li>
-        )}
-
-        {PhpNav && (
-          <li className="p-4">
-            <NavLink to="/Php">PHP</NavLink>
-          </li>
+        {navItems.map(
+          ({ name, path, enabled }) =>
+            enabled && (
+              <li key={name} className="p-4">
+                <NavLink
+                  to={path}
+                  className={({ isActive }) =>
+                    isActive ? "text-blue-500 font-bold" : "text-gray-500"
+                  }
+                >
+                  {name}
+                </NavLink>
+              </li>
+            )
         )}
       </ul>
     </nav>

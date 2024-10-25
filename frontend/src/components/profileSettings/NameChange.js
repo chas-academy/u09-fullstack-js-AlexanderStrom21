@@ -1,14 +1,31 @@
-import { useEffect, useState } from "react";
-import UseFetchProfile from "../../hooks/userHooks/FetchProfile";
-import axios from "axios";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { authService } from "../../services/AuthService";
+import useAuthToken from "../../hooks/authHooks/useAuthToken";
+import useFetchProfile from "../../hooks/userHooks/useFetchProfile";
+import useForm from "../../hooks/form/useForm";
 
-const ProfileNameChange = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
+const UpdateProfile = () => {
+  const { user, loading, error } = useFetchProfile();
+  const { getToken } = useAuthToken();
+  const navigate = useNavigate();
 
-  const { user, loading, error } = UseFetchProfile();
+  const { formData, handleChange, setFormData, handleSubmit } = useForm(
+    {
+      email: "",
+      password: "",
+    },
+    async (formData) => {
+      const token = getToken();
+      const result = await authService.updateUser(formData, token);
+      if (result.success) {
+        alert(result.message);
+        navigate("/profile");
+      } else {
+        alert(result.message);
+      }
+    }
+  );
 
   useEffect(() => {
     if (user) {
@@ -17,43 +34,7 @@ const ProfileNameChange = () => {
         password: "",
       });
     }
-  }, [user]);
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const token = localStorage.getItem("token");
-    try {
-      const response = await axios.put(
-        `https://node-mongodb-api-4lo4.onrender.com/profile/`,
-        formData,
-        {
-          withCredentials: true,
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      alert(response.data.message);
-      window.location.reload();
-    } catch (err) {
-      if (err.response) {
-        alert(
-          err.response.data.error || "An error occurred during updating user"
-        );
-      } else if (err.request) {
-        console.error("Error during updating:", err.request);
-        alert("updating failed. Please try again later.");
-      } else {
-        console.error("Error during updating", err.message);
-        alert("An unexpected error occurred.");
-      }
-    }
-  };
+  }, [user, setFormData]);
 
   if (loading) {
     return <p>Loading profile...</p>;
@@ -98,4 +79,4 @@ const ProfileNameChange = () => {
   );
 };
 
-export default ProfileNameChange;
+export default UpdateProfile;

@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
-import UseFetchProfile from "../userHooks/FetchProfile";
+import useFetchProfile from "../userHooks/useFetchProfile";
 
 const UseFetchAllUsers = () => {
   const [allUsers, setAllUsers] = useState([]);
@@ -23,8 +23,7 @@ const UseFetchAllUsers = () => {
 
     fetchUsers();
   }, []);
-
-  const { user } = UseFetchProfile();
+  const { user } = useFetchProfile();
   const username = user?.username;
   const filterUsers = useCallback(
     (searchTerm) => {

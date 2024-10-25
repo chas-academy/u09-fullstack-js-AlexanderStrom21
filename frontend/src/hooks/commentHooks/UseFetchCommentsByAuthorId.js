@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import UseFetchProfile from "../userHooks/FetchProfile";
 import UseFetchThreads from "../threadHooks/UseThreads";
+import useFetchProfile from "../userHooks/useFetchProfile";
 
 const useFetchCommentsByAuthorId = () => {
   const { threads, loading, error } = UseFetchThreads();
-  const { user } = UseFetchProfile();
+  const { user } = useFetchProfile();
   const [userThreadComments, setUserThreadComments] = useState([]);
   const [userCommentsAndAuthorMatch, setUserCommentsAndAuthorMatch] =
     useState(false);

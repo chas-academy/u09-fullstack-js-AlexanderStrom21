@@ -15,5 +15,7 @@ router.put("/profile", authMiddleware, userController.updateProfile);
 router.get("/allUsers", userController.getAllUsers);
 // logout user
 router.post("/logout", authMiddleware, userController.logout);
+// Delete user
+router.delete("/profile/:id", authMiddleware, userController.deleteUser);
 
 module.exports = router;

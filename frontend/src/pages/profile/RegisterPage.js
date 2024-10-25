@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import RegisterForm from "../../components/Auth/RegisterForm";
 import { authService } from "../../services/AuthService";
+import RegisterForm from "../../components/Auth/RegisterForm";
 
-const RegisterAUser = () => {
+const RegisterPage = () => {
   const navigate = useNavigate();
 
   const handleRegister = async (formData) => {
@@ -17,5 +17,4 @@ const RegisterAUser = () => {
 
   return <RegisterForm onSubmit={handleRegister} />;
 };
-
-export default RegisterAUser;
+export default RegisterPage;

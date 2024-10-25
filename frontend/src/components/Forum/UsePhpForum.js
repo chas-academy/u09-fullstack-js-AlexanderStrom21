@@ -1,13 +1,13 @@
-import useAuth from "../../hooks/userHooks/UseAuth";
+import { useAuth } from "../../hooks/authHooks/UseAuth";
 import CreateThread from "../Threads/CreateThread";
 import FetchThreadsById from "../Threads/FetchThreadsById";
 
 const UsePhpForum = () => {
-  const isLoggedIn = useAuth();
+  const isAuthenticated = useAuth();
 
   return (
     <div className="h-screen p-6">
-      {isLoggedIn ? (
+      {isAuthenticated ? (
         <div className="space-y-8">
           <CreateThread forumType="Php" />
           <FetchThreadsById forumType="Php" />

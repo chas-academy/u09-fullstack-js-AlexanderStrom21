@@ -60,3 +60,9 @@ exports.updateUserProfile = async (userId, updateData) => {
     runValidators: true,
   }).select("-password");
 };
+
+// Delete a user
+exports.deleteUser = async (userId) => {
+  const user = await User.findByIdAndDelete(userId);
+  return user;
+};

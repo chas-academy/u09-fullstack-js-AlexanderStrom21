@@ -1,10 +1,10 @@
-import ProfileNameChange from "../../components/profileSettings/NameChange";
+import UpdateProfile from "../../components/profileSettings/NameChange";
 
 const UserSettings = () => {
   return (
     <>
       <div className="m-2">
-        <ProfileNameChange />
+        <UpdateProfile />
       </div>
     </>
   );

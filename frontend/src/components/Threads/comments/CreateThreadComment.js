@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import UseFetchProfile from "../../../hooks/userHooks/FetchProfile";
+import useFetchProfile from "../../../hooks/userHooks/useFetchProfile";
 
 const CreateThreadComment = ({ threadId }) => {
   const [formData, setFormData] = useState({
@@ -8,7 +8,7 @@ const CreateThreadComment = ({ threadId }) => {
     author: "",
   });
 
-  const { user, loading, error } = UseFetchProfile();
+  const { user, loading, error } = useFetchProfile();
 
   useEffect(() => {
     if (user) {
