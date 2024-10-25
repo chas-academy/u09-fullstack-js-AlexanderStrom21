@@ -1,19 +1,21 @@
 import axios from "axios";
 import useAuthToken from "../authHooks/useAuthToken";
+import { useState } from "react";
 
 const useDeleteUser = (setUsers) => {
   const { getToken } = useAuthToken();
+  const [deleting, setDeleting] = useState(false);
 
   const handleDelete = async (userId) => {
-    const token = getToken(); // Retrieve token from localStorage or context
-    console.log("Token used for deletion:", token); // Debugging log
+    const token = getToken();
+    setDeleting(true);
 
     try {
       const response = await axios.delete(
         `https://node-mongodb-api-4lo4.onrender.com/profile/${userId}`,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Ensure the token is passed correctly
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -27,12 +29,11 @@ const useDeleteUser = (setUsers) => {
         alert("Failed to delete user.");
       }
     } catch (err) {
-      console.error("Error deleting user:", err); // Log the error
       alert("Error deleting user.");
     }
   };
 
-  return { handleDelete };
+  return { handleDelete, deleting };
 };
 
 export default useDeleteUser;

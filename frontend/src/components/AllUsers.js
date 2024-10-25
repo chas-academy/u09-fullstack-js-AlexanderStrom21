@@ -12,7 +12,6 @@ const AllUsers = () => {
   const [users, setUsers] = useState([]);
   const { handleDelete, deleting } = useDeleteUser(setUsers);
 
-  // Sync initialData with users state once the data is fetched
   useEffect(() => {
     if (initialData) {
       setUsers(initialData);
@@ -33,7 +32,12 @@ const AllUsers = () => {
       <ul className="space-y-4 h-fit overflow-y-auto">
         {users.length > 0 ? (
           users.map((user) => (
-            <UserItem key={user._id} user={user} handleDelete={handleDelete} />
+            <UserItem
+              key={user._id}
+              user={user}
+              handleDelete={handleDelete}
+              deleting={deleting}
+            />
           ))
         ) : (
           <p>No users available.</p>

@@ -86,16 +86,13 @@ exports.updateProfile = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const userId = req.params.id;
-    console.log(`Attempting to delete user with ID: ${userId}`); // Add logging
 
     const user = await userService.deleteUser(userId);
 
     if (!user) {
-      console.log("User not found"); // Log in case of 404
       return res.status(404).json({ message: "User not found" });
     }
 
-    console.log("User deleted successfully"); // Log success
     res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     console.error("Server error while deleting user", error);
