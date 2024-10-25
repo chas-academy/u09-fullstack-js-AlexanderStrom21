@@ -65,7 +65,7 @@ exports.getAllUsers = async (req, res) => {
 // Update user profile
 exports.updateProfile = async (req, res) => {
   try {
-    const userId = req.params.userId;
+    const userId = req.parms.id;
     const updateData = req.body;
 
     const updatedUser = await userService.updateUserProfile(userId, updateData);

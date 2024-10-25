@@ -69,7 +69,7 @@ const UpdateProfile = () => {
           className="p-3 rounded border border-gray-300 focus:outline-none focus:ring-2 focus:ring-info transition duration-200"
           type="password"
           name="password"
-          placeholder="Password"
+          placeholder="Password (leave blank to keep current)"
           value={formData.password}
           onChange={handleChange}
           required

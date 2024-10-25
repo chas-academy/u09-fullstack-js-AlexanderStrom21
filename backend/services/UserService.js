@@ -50,6 +50,11 @@ exports.getAllUsers = async () => {
 
 //update User Profile
 exports.updateUserProfile = async (userId, updateData) => {
+  const user = await User.findById(userId);
+  if (!user) {
+    console.log("skit ner dig");
+    return null;
+  }
   if (updateData.password) {
     const salt = await bcrypt.genSalt(10);
     updateData.password = await bcrypt.hash(updateData.password, salt);

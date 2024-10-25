@@ -70,25 +70,35 @@ export const authService = {
       console.error("Logout failed", error);
     }
   },
-  //Update api Service
-  updateUser: async (updatedData, token, userId) => {
+  //update User
+  updateUser: async (updateData, token, userId) => {
     try {
-      const response = await axios.put(
-        `https://your-api-url.com/profile/${userId}`,
-        updatedData,
+      const response = await fetch(
+        `https://node-mongodb-api-4lo4.onrender.com/profile/${userId}`,
         {
+          method: "PUT",
           headers: {
-            Authorization: `Bearer ${token}`,
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
-
-          withCredentials: true,
+          body: JSON.stringify(updateData),
         }
       );
-      return response.data;
+
+      if (!response.ok) {
+        const error = await response.json();
+        return { success: false, message: error.message || "Update failed" };
+      }
+
+      const updatedUser = await response.json();
+      return {
+        success: true,
+        message: "User updated successfully",
+        user: updatedUser,
+      };
     } catch (error) {
       console.error("Error updating user:", error);
-      return { success: false, message: "Failed to update user" };
+      return { success: false, message: "An unexpected error occurred" };
     }
   },
 };

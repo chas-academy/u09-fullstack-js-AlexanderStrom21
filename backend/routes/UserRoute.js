@@ -10,7 +10,7 @@ router.post("/login", userController.login);
 // Fetch user profile
 router.get("/profile", authMiddleware, userController.getProfile);
 // Update user profile
-router.put("/profile/:id", authMiddleware, userController.updateProfile);
+router.put("/profile", authMiddleware, userController.updateProfile);
 // Get all users
 router.get("/allUsers", userController.getAllUsers);
 // logout user

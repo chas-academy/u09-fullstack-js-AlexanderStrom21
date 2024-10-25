@@ -17,13 +17,18 @@ app.use(cookieParser());
 // CORS Configuration
 app.use(
   cors({
-    origin: [process.env.FRONTEND_URL, process.env.DEV_FRONTEND_URL],
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    origin: [process.env.DEV_FRONTEND_URL],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
   })
 );
 
-app.options("*", cors()); 
+app.options("*", cors(), (req, res) => res.sendStatus(200));
+
+// Routes
+app.use("/", threadRoutes);
+app.use("/", usersRoute);
 
 // Connect to MongoDB
 mongoose
@@ -33,10 +38,6 @@ mongoose
   })
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
-
-// Routes
-app.use("/", threadRoutes);
-app.use("/", usersRoute);
 
 // Server Listening
 const PORT = process.env.PORT || 5000;
