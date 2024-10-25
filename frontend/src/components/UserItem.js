@@ -1,6 +1,4 @@
 const UserItem = ({ user, handleDelete }) => {
-  console.log("Deleting user with ID:", user._id); // Debugging line to verify user ID
-
   return (
     <li
       className="bg-primary text-text p-4 rounded-lg flex justify-between items-center w-full shadow-md hover:shadow-lg transition-shadow duration-300 ease-in-out mb-4"

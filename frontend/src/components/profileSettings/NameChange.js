@@ -17,7 +17,13 @@ const UpdateProfile = () => {
     },
     async (formData) => {
       const token = getToken();
-      const result = await authService.updateUser(formData, token);
+      const updatedData = { email: formData.email };
+
+      if (formData.password) {
+        updatedData.password = formData.password;
+      }
+
+      const result = await authService.updateUser(updatedData, token);
       if (result.success) {
         alert(result.message);
         navigate("/profile");
