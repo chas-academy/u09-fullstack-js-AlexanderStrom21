@@ -5,3 +5,7 @@ Min documentation liger i readmé filer i projektet
 
 kör render på en annan commit då jag gjorde lite extra ändringar som krashade lite. men vill jobba vidare så behåller commiten men kör backend på äldre fil
 commit  "16bd5f4"
+
+admin user login: 
+email: user6@test.se
+password: usertest
