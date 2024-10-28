@@ -3,9 +3,6 @@ https://www.figma.com/design/5VryNIlCAIIihJbUW2cdsg/Untitled?node-id=0-1&node-ty
 
 Min documentation liger i front/backend.md filer i projektet
 
-kör render på en annan commit då jag gjorde lite extra ändringar som krashade lite. men vill jobba vidare så behåller commiten men kör backend på äldre fil
-commit  "16bd5f4"
-
 gå in i backend och skapa en .env fil med följande inehåll:
 MONGO_URI=mongodb+srv://alexanderstrom999:Jamtli11@purposecoderdb.kgq6s.mongodb.net/PurposeCoderDb
 JWT_SECRET=Jamtli11
