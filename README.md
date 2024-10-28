@@ -12,6 +12,7 @@ JWT_SECRET=Jamtli11
 REACT_APP_API_URL=https://node-mongodb-api-4lo4.onrender.com
 FRONTEND_URL=https://purposecoder.netlify.app
 
+haft lite problem med min deploayde service så om du vill se local host knör i terminalen npm start inuti frontend mapen 
 
 admin user login: 
 email: user6@test.se
