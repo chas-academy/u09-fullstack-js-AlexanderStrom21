@@ -1,13 +1,11 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../../services/AuthService";
-import useAuthToken from "../../hooks/authHooks/useAuthToken";
 import useFetchProfile from "../../hooks/userHooks/useFetchProfile";
 import useForm from "../../hooks/form/useForm";
 
 const UpdateProfile = () => {
   const { user, loading, error } = useFetchProfile();
-  const { getToken } = useAuthToken();
   const navigate = useNavigate();
 
   const { formData, handleChange, setFormData, handleSubmit } = useForm(
@@ -16,16 +14,13 @@ const UpdateProfile = () => {
       password: "",
     },
     async (formData) => {
-      const token = getToken();
       const updatedData = { email: formData.email };
 
-      // If the password is filled, include it in the update
       if (formData.password.trim()) {
         updatedData.password = formData.password;
       }
 
-      // Call the authService with userId in the URL
-      const result = await authService.updateUser(updatedData, token, user._id); // Pass userId
+      const result = await authService.updateUser(updatedData); // Pass userId
       if (result.success) {
         alert(result.message);
         navigate("/profile");
@@ -35,7 +30,6 @@ const UpdateProfile = () => {
     }
   );
 
-  // Prefill the form data once the user data is fetched
   useEffect(() => {
     if (user) {
       setFormData({

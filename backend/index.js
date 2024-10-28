@@ -24,8 +24,6 @@ app.use(
   })
 );
 
-app.options("*", cors(), (req, res) => res.sendStatus(200));
-
 // Routes
 app.use("/", threadRoutes);
 app.use("/", usersRoute);

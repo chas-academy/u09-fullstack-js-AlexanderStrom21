@@ -71,34 +71,31 @@ export const authService = {
     }
   },
   //update User
-  updateUser: async (updateData, token, userId) => {
+  updateUser: async (updateData) => {
+    const token = localStorage.getItem("token");
     try {
-      const response = await fetch(
-        `https://node-mongodb-api-4lo4.onrender.com/profile/${userId}`,
+      const response = await axios.put(
+        `https://node-mongodb-api-4lo4.onrender.com/profile`,
+        updateData,
         {
-          method: "PUT",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json", 
+            Authorization: `Bearer ${token}`, 
           },
-          body: JSON.stringify(updateData),
         }
       );
 
-      if (!response.ok) {
-        const error = await response.json();
-        return { success: false, message: error.message || "Update failed" };
-      }
-
-      const updatedUser = await response.json();
       return {
         success: true,
         message: "User updated successfully",
-        user: updatedUser,
+        user: response.data, // Access the response data directly
       };
     } catch (error) {
       console.error("Error updating user:", error);
-      return { success: false, message: "An unexpected error occurred" };
+      return {
+        success: false,
+        message: error.response?.data.message || "An unexpected error occurred",
+      };
     }
   },
 };

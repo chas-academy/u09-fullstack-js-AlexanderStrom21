@@ -64,22 +64,24 @@ exports.getAllUsers = async (req, res) => {
 
 // Update user profile
 exports.updateProfile = async (req, res) => {
-  try {
-    const userId = req.parms.id;
-    const updateData = req.body;
+  const { userId } = req;
+  const updateData = req.body;
 
-    const updatedUser = await userService.updateUserProfile(userId, updateData);
-
-    if (!updatedUser) {
-      return res.status(404).json({ message: "User not found" });
-    }
-
-    res
-      .status(200)
-      .json({ message: "Profile updated successfully", user: updatedUser });
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+  if (updateData.password) {
+    updateData.password = await bcrypt.hash(updateData.password, 10);
   }
+
+  const updatedUser = await User.findByIdAndUpdate(userId, updateData, {
+    new: true,
+  });
+
+  if (!updatedUser) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
+  res
+    .status(200)
+    .json({ message: "Profile updated successfully", user: updatedUser });
 };
 
 // Delete user
